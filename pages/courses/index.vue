@@ -16,20 +16,7 @@
         <ul
           class="flex bg-white shadow-md rounded-lg m-3 ml-36 h-10 w-24 items-center justify-center hover:bg-violet-500 cursor-pointer hover:text-white overflow-hidden text-violet-500 right-1 absolute"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-8"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-            />
-          </svg>
+          <Icon name="fluent:bookmark-16-filled" size="30" />
           <p class="text-sm">Record</p>
         </ul>
       </div>
