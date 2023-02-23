@@ -5,7 +5,7 @@
       <div class="flex m-2 justify-evenly">
         <article
           class="cursor-pointer"
-          v-for="(item, index) in toTal"`
+          v-for="(item, index) in toTal"
           :key="index"
         >
           <NuxtLink :to="item.path">
@@ -29,13 +29,13 @@
       <div class="p-2">
         <ul class="flex justify-evenly items-center">
           <div
-            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2"
+            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
           >
             <li class="p-2 absolute">Statistics</li>
             <li class="h-44 w-80" id="chartBar"></li>
           </div>
           <div
-            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2"
+            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
           >
             <li class="p-2">Courses</li>
             <li class="h-40 w-40 p-2" id="chartPie"></li>
@@ -45,8 +45,8 @@
 
       <!-- table -->
       <div class="w-full h-full">
-        <section class="p-2">
-          <div class="bg-white drop-shadow-xl rounded-lg overflow-hidden">
+        <section class="p-2 border-2">
+          <div class="overflow-hidden">
             <ul class="flex justify-between pl-2 pt-2">
               <li class="font-semibold">Database</li>
               <li>
@@ -62,19 +62,19 @@
                   <thead class="border-2">
                     <tr class="font-medium">
                       <td>
-                        <p class="flex justify-center items-center">Students</p>
+                        <p class="flex justify-center items-center overflow-hidden">Students</p>
                       </td>
                       <td>
-                        <p class="flex justify-center items-center">Score</p>
+                        <p class="flex justify-center items-center overflow-hidden">Score</p>
                       </td>
                       <td>
-                        <p class="flex justify-center items-center">Submited</p>
+                        <p class="flex justify-center items-center overflow-hidden">Submited</p>
                       </td>
                       <td>
-                        <p class="flex justify-center items-center">Grad</p>
+                        <p class="flex justify-center items-center overflow-hidden">Grad</p>
                       </td>
                       <td>
-                        <p class="flex justify-center items-center">
+                        <p class="flex justify-center items-center overflow-hidden">
                           Pass/Fail
                         </p>
                       </td>
@@ -82,11 +82,11 @@
                   </thead>
                   <tbody>
                     <tr
-                      class="cursor-pointer hover:brightness-90"
+                      class="cursor-pointer bg-white hover:brightness-90 "
                       v-for="(item, index) in Students"
                       :key="index"
                     >
-                      <td class="bg-white rounded-2xl flex space-x-2">
+                      <td class="flex space-x-2">
                         <img
                           class="xl:w-12 sm:w-6 rounded-full p-1"
                           :src="item.icon"
@@ -195,7 +195,7 @@
               <li>12</li>
               <li>13</li>
               <li>14</li>
-              <li class="active">15</li>
+              <li>15</li>
               <li>16</li>
               <li>17</li>
               <li>18</li>
@@ -203,7 +203,7 @@
               <li>20</li>
               <li>21</li>
               <li>22</li>
-              <li>23</li>
+              <li class="active">23</li>
               <li>24</li>
               <li>25</li>
               <li>26</li>
