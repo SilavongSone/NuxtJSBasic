@@ -18,10 +18,26 @@
 
       <div class="col-span-4 p-2 h-full relative bg-white shadow-md m-2">
         <section class="h-full relative p-2">
-          <div class="bg-white">
-            <div>PRo</div>
-            <div>ID</div>
-          </div>
+          <form class="flex items-center space-x-6">
+            <div class="shrink-0">
+              <img
+                class="h-16 w-16 object-cover rounded-full"
+                :src="imgSrc"
+                alt="Current profile photo"
+              />
+            </div>
+            <label class="block">
+              <span class="sr-only">Choose profile photo</span>
+              <input type="file" @change="inputImage" />
+              <!-- <button
+                @click="onFileChanged"
+                type="file"
+                class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+              >
+                ok
+              </button> -->
+            </label>
+          </form>
 
           <from class="my-2 grid grid-cols-2">
             <div>
@@ -59,6 +75,13 @@
 </template>
 
 <script setup>
+const imgSrc = ref();
+
+const inputImage = (event) => {
+  const file = event.target.files[0];
+  imgSrc.value = URL.createObjectURL(file);
+};
+
 const settingMenu = [
   {
     label: "Personal data",
