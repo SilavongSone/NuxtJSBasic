@@ -3,9 +3,9 @@
     <section class="bg-white w-full h-screen text-xs shadow-md">
       <div class="w-36 text-gray-500 p-2">
         <div class="flex items-center justify-center">
-          <router-link to="/"
+          <Nuxt-link to="/"
             ><img class="p-2 w-16" src="../assets/logo/logo.png" alt="logo"
-          /></router-link>
+          /></Nuxt-link>
         </div>
         <div v-for="(item, index) in navBarItem" :key="index">
           <NuxtLink :to="item.path"
@@ -60,17 +60,17 @@ const navBarItem = [
   },
   {
     label: "Exam",
-    path: "/course",
+    path: "/",
     icon: ExamIcon,
   },
   {
     label: "Message",
-    path: "/course",
+    path: "",
     icon: MessageIcon,
   },
   {
     label: "Friends",
-    path: "/course",
+    path: "",
     icon: FriendsIcon,
   },
 ];
