@@ -99,3 +99,48 @@ const person = {
   },
 };
 </script>
+
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      fName: "Pro",
+      lName: "Include",
+      Nname: "",
+      age: 20,
+      gMail: "ProInclude@gmail.com",
+
+      // Array
+      hobby: ["Playingame", "listenMusic"],
+
+      // Object
+      status: { gender: "ຊາຍ", weight: 70, hight: 180, healty: false },
+    };
+  },
+  methods: {
+    fullName() {
+      return this.fName + " " + this.lName;
+    },
+
+    nameAlt() {
+      alert(this.fName + this.lName);
+    },
+
+    // Event argument
+    increment(value) {
+      this.age += value;
+    },
+
+    //Event Click
+    decrement(value) {
+      this.age -= value;
+    },
+
+    //Event Input
+    NnamePut(event) {
+      this.Nname = event.target.value;
+    },
+  },
+};
+</script>

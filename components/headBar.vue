@@ -41,7 +41,7 @@
         </button>
       </div>
     </section>
-
+    
     <section>
       <div>
         <NuxtLink to="Profile"><li
