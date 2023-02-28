@@ -475,7 +475,7 @@ header .current-date {
 .calendar {
   padding: 20px;
   background: #f2f2f2;
-  border-radius: %;
+  border-radius: 0%;
 }
 .calendar ul {
   display: flex;

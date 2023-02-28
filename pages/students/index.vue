@@ -1,6 +1,7 @@
 <template>
-  <div class="h-full w-full bg-no-repeat bg-cover box-border bg-[url('https://cdn.pixabay.com/photo/2017/12/22/08/01/school-supplies-3033204_960_720.jpg')] ">
-
+  <div
+    class="h-full w-full bg-no-repeat bg-cover box-border bg-[url('https://cdn.pixabay.com/photo/2017/12/22/08/01/school-supplies-3033204_960_720.jpg')]"
+  >
     <section class="flex justify-between ml-4 pt-4 items-center">
       <!-- Department -->
       <div class="flex items-center">
@@ -40,15 +41,19 @@
           </select>
         </div>
       </div>
-
     </section>
-    <div class=" h-4/5  relative
-    ">
-      <ul class="cursor-pointer  flex justify-end p-2 px-6  right-2 absolute bottom-1">
-        <NuxtLink to="/students/data"
-          ><li class="bg-green-500 hover:bg-green-600 px-6 m-2">OK</li></NuxtLink
+    <div class="h-4/5 relative">
+      <ul
+        class="cursor-pointer flex justify-end p-2 px-6 right-2 absolute bottom-1"
+      >
+        <NuxtLink to="/std"
+          ><li class="bg-green-500 hover:bg-green-600 px-6 m-2">
+            OK
+          </li></NuxtLink
         >
-        <li class="bg-red-500 hover:bg-red-600 px-6 m-2 active:translate-x-2">Cancel</li>
+        <li class="bg-red-500 hover:bg-red-600 px-6 m-2 active:translate-x-2">
+          Cancel
+        </li>
       </ul>
     </div>
   </div>
