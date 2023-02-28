@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full box-border bg-gradient-to-r from-fuchsia-100 to-fuchsia-400">
+  <div class="h-full w-full bg-no-repeat bg-cover box-border bg-[url('https://cdn.pixabay.com/photo/2017/12/22/08/01/school-supplies-3033204_960_720.jpg')] ">
 
     <section class="flex justify-between ml-4 pt-4 items-center">
       <!-- Department -->
@@ -19,7 +19,7 @@
 
       <!-- Years -->
       <div class="flex pr-2 items-center text-sm">
-        <div class="pr-1">Years :</div>
+        <div class="pr-1">Years:</div>
         <div class="bg-white shadow-md p-1 rounded-md px-5">
           <select class="bg-white w-full">
             <option>1</option>
@@ -44,7 +44,7 @@
     </section>
     <div class=" h-4/5  relative
     ">
-      <ul class="cursor-pointer  flex justify-end p-2 px-6 right-2 absolute bottom-1">
+      <ul class="cursor-pointer  flex justify-end p-2 px-6  right-2 absolute bottom-1">
         <NuxtLink to="/students/data"
           ><li class="bg-green-500 hover:bg-green-600 px-6 m-2">OK</li></NuxtLink
         >
