@@ -1,6 +1,6 @@
 <template>
-  <div class="grid grid-cols-2 p-2">
-    <section class="w-full h-full overflow-hidden">
+  <div class="grid grid-cols-3 p-2">
+    <section class="w-full h-full overflow-hidden col-span-2">
       <!-- total -->
       <div class="flex m-2 justify-evenly">
         <article
@@ -26,19 +26,19 @@
       </div>
 
       <!-- echarts -->
-      <div class="p-2">
+      <div class="p-2 m-2">
         <ul class="flex justify-evenly items-center">
           <div
             class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
           >
             <li class="p-2 absolute">Statistics</li>
-            <li class="h-44 w-80" id="chartBar"></li>
+            <li class="h-44 w-96" id="chartBar"></li>
           </div>
           <div
             class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
           >
             <li class="p-2">Courses</li>
-            <li class="h-40 w-40 p-2" id="chartPie"></li>
+            <li class="h-44 w-64 p-2" id="chartPie"></li>
           </div>
         </ul>
       </div>
@@ -62,19 +62,37 @@
                   <thead class="border-2">
                     <tr class="font-medium">
                       <td>
-                        <p class="flex justify-center items-center overflow-hidden">Students</p>
+                        <p
+                          class="flex justify-center items-center overflow-hidden"
+                        >
+                          Students
+                        </p>
                       </td>
                       <td>
-                        <p class="flex justify-center items-center overflow-hidden">Score</p>
+                        <p
+                          class="flex justify-center items-center overflow-hidden"
+                        >
+                          Score
+                        </p>
                       </td>
                       <td>
-                        <p class="flex justify-center items-center overflow-hidden">Submited</p>
+                        <p
+                          class="flex justify-center items-center overflow-hidden"
+                        >
+                          Submited
+                        </p>
                       </td>
                       <td>
-                        <p class="flex justify-center items-center overflow-hidden">Grad</p>
+                        <p
+                          class="flex justify-center items-center overflow-hidden"
+                        >
+                          Grad
+                        </p>
                       </td>
                       <td>
-                        <p class="flex justify-center items-center overflow-hidden">
+                        <p
+                          class="flex justify-center items-center overflow-hidden"
+                        >
                           Pass/Fail
                         </p>
                       </td>
@@ -82,13 +100,13 @@
                   </thead>
                   <tbody>
                     <tr
-                      class="cursor-pointer bg-white hover:brightness-90 "
+                      class="cursor-pointer bg-white hover:brightness-90"
                       v-for="(item, index) in Students"
                       :key="index"
                     >
                       <td class="flex space-x-2">
                         <img
-                          class="xl:w-12 sm:w-6 rounded-full p-1"
+                          class=" sm:w-12 sm:h-12 rounded-full p-1"
                           :src="item.icon"
                           alt=""
                         />
@@ -126,10 +144,10 @@
       </div>
     </section>
 
-    <section class="w-full h-full overflow-hidden">
-      <div class="m-2 overflow-hidden flex justify-center">
-        <ul class="wrapper bg-gray-400">
-          <header class="bg-gray-400">
+    <section class="w-full h-full overflow-hidden bg-white shadow-md">
+      <div class="m-2 overflow-hidden flex justify-center bg-white p-2 shadow-md">
+        <ul class="wrapper bg-gray-400 rounded-md">
+          <header class="">
             <p class="current-date">February 2022</p>
             <div class="icons">
               <span id="prev" class="material-symbols-rounded"
@@ -167,7 +185,7 @@
             </div>
           </header>
 
-          <div class="calendar bg-white shadow-md">
+          <div class="calendar">
             <ul class="weeks">
               <li class="px-4">Sun</li>
               <li class="px-4">Mon</li>
@@ -420,8 +438,8 @@ const Students = [
 /* calendar Dynamic */
 
 .wrapper {
-  width: 600px;
-  height: 500px;
+  width: 500px;
+  height: 450px;
 }
 .wrapper header {
   display: flex;
@@ -452,8 +470,12 @@ header .current-date {
   font-size: 1.45rem;
   font-weight: 500;
 }
+
+/* bodycalendar */
 .calendar {
   padding: 20px;
+  background: #f2f2f2;
+  border-radius: %;
 }
 .calendar ul {
   display: flex;
@@ -483,7 +505,7 @@ header .current-date {
   color: #aaa;
 }
 .day li.active {
-  color: #fff;
+  color: #f9f9f9;
 }
 .day li::before {
   position: absolute;
@@ -500,6 +522,6 @@ header .current-date {
   background: #9b59b6;
 }
 .day li:not(.active):hover::before {
-  background: #f2f2f2;
+  background: #fff;
 }
 </style>
