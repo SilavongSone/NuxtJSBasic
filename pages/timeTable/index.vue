@@ -39,11 +39,10 @@
           </select>
         </div>
       </div>
-      <section></section>
     </section>
 
 <!-- table -->
-    <section class="m-2 text-sm">
+    <section class="m-2 text-sm my-4">
       <table class="table-fixed w-full">
         <thead class="">
           <tr class="font-medium">

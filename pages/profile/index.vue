@@ -1,8 +1,8 @@
 <template>
   <div class="box-border w-full h-full p-2">
     <div class="grid grid-cols-5 h-full">
-      <div class="p-2 flex justify-center">
-        <section class="bg-white rounded-lg p-2 shadow-md fixed">
+      <section class="p-2 flex justify-center">
+        <div class="bg-white rounded-lg p-2 shadow-md fixed">
           <ul
             class="text-gray-600 p-2 cursor-pointer hover:bg-violet-500 rounded-xl hover:text-white focus:bg-black active:bg-black active:will-change-transform"
             v-for="(item, index) in settingMenu"
@@ -13,11 +13,12 @@
               >{{ item.label }}
             </button>
           </ul>
-        </section>
-      </div>
+        </div>
+      </section>
 
-      <div class="col-span-4 p-2 h-full relative bg-white shadow-md m-2">
-        <section class="h-full relative p-2">
+      <section class="col-span-4 p-2 shadow-md m-2">
+        <div class="p-2">
+
           <form class="items-center space-x-6">
             <div class="shrink-0 flex pl-10 items-center space-x-4 m-1 p-1">
               <img
@@ -25,7 +26,7 @@
                 :src="imgSrc"
                 alt="Current profile photo"
               />
-              <p class="text-xl font-semibold">fullName</p>
+              <p class="text-xl font-semibold">{{ person.fullName() }}</p>
             </div>
             <label class="block">
               <span class="sr-only"></span>
@@ -36,72 +37,11 @@
               />
             </label>
           </form>
+        </div>
 
-          <from class="my-2 grid grid-cols-2 mt-6 text-gray-500">
-            <div class="my-1 mr-10">
-              <p>Frist name</p>
-              <input
-                class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black"
-                type="text"
-              />
-            </div>
-            <div class="my-1 mr-10">
-              <p>Last name</p>
-              <input
-                class="bg-gray-200 rounded-sm text-lg p-1 text-black w-full"
-                type="text"
-              />
-            </div>
-            <div class="my-1 mr-10">
-              <p>Email</p>
-              <input
-                class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black"
-                type="email"
-              />
-            </div>
-            <div class="my-1 mr-10">
-              <p>Phone</p>
-              <input
-                class="bg-gray-200 rounded-sm text-lg p-1 text-black w-full"
-                type="text"
-              />
-            </div>
-            <div class="my-1 mr-10">
-              <p>Address</p>
-              <input
-                class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black"
-                type="text"
-              />
-            </div>
-            <div class="my-1 mr-10">
-              <p>Gender</p>
-              <input
-                class="bg-gray-200 rounded-sm text-lg p-1 text-black w-full"
-                type="text"
-              />
-            </div>
-          </from>
+        <div class="bg-blue-500 my-2">svv</div>
+      </section>
 
-          <div
-            class="bottom-10 right-10 flex justify-end space-x-10 text-lg font-medium text-white p-2 mr-8"
-          >
-            <p class="bg-violet-500 p-2 rounded-md">
-              <input
-                class="hover:underline cursor-pointer active:translate-y-1"
-                type="submit"
-                value="Changes"
-              />
-            </p>
-            <p class="bg-violet-500 p-2 rounded-md">
-              <input
-                class="hover:underline cursor-pointer active:translate-y-1"
-                type="reset"
-                value="Cancel"
-              />
-            </p>
-          </div>
-        </section>
-      </div>
     </div>
   </div>
 </template>
@@ -138,9 +78,24 @@ const settingMenu = [
 ];
 
 const person = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 50,
-  eyeColor: "blue",
+  firstName: "Johny",
+  lastName: "Dev",
+  mail: "",
+  phone: "",
+  Address: "",
+  gender: "",
+  Nname: "",
+
+  fullName() {
+    return this.firstName + " " + this.lastName;
+  },
+
+  putName(event) {
+    return (this.Nname = event.target.value);
+  },
+
+  saveputName(e) {
+    alert("complice");
+  },
 };
 </script>
