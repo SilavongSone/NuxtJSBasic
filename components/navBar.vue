@@ -65,12 +65,12 @@ const navBarItem = [
   },
   {
     label: "Message",
-    path: "",
+    path: "/",
     icon: MessageIcon,
   },
   {
     label: "Friends",
-    path: "",
+    path: "/",
     icon: FriendsIcon,
   },
 ];
