@@ -9,13 +9,13 @@
 
     <section class="flex flex-col h-full w-full">
       <!-- Headbar -->
-      <nav class="">
+      <nav>
         <div>
           <headBar></headBar>
         </div>
       </nav>
       <!-- Router view -->
-      <div class="h-full overflow-auto">
+      <div class="overflow-auto">
         <router-view></router-view>
       </div>
     </section>

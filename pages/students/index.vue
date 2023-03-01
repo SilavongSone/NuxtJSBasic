@@ -7,7 +7,7 @@
       <div class="flex items-center">
         <div class="font-medium pr-10 text-sm"></div>
         <div class="flex pr-6 items-center text-sm">
-          <div class="pr-1">Department :</div>
+          <div class="pr-1"> Department :</div>
           <div class="bg-white shadow-md p-1 rounded-md text-sm">
             <select>
               <option>Information Technology</option>
@@ -46,7 +46,7 @@
       <ul
         class="cursor-pointer flex justify-end p-2 px-6 right-2 absolute bottom-1"
       >
-        <NuxtLink to="/std"
+        <NuxtLink to="/students/std"
           ><li class="bg-green-500 hover:bg-green-600 px-6 m-2">
             OK
           </li></NuxtLink
