@@ -44,7 +44,8 @@
 
     <section>
       <div>
-        <NuxtLink to="Profile"><li
+        <NuxtLink to="/profile/personal"
+          ><li
             class="justify-between w-full bg-white rounded-full drop-shadow-md flex p-2 text-sm text-gray-500 font-semibold hover:brightness-95 hover:text-black items-center"
           >
             <img
@@ -80,8 +81,8 @@
                 src="../assets/icon/settings.png"
                 alt=""
               />
-            </ul>
-          </li></NuxtLink>
+            </ul></li
+        ></NuxtLink>
       </div>
     </section>
   </div>
