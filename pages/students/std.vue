@@ -100,19 +100,6 @@ const stdData = [
     year: "3",
     icon: pinmook,
   },
-  {
-    name: "Pin Mook",
-    id: "123456715",
-    class: "IT13M3",
-    year: "3",
-    icon: pinmook,
-  },
-  {
-    name: "Pin Mook",
-    id: "123456715",
-    class: "IT13M3",
-    year: "3",
-    icon: pinmook,
-  },
+
 ];
 </script>

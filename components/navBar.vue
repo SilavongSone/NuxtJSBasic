@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <section class="bg-white w-full h-screen text-xs shadow-md">
+  <div class="h-full w-full">
+    <section class="bg-white w-full h-full rounded-md text-xs shadow-md">
       <div class="w-36 text-gray-500 p-2">
         <div class="flex items-center justify-center">
           <Nuxt-link to="/"

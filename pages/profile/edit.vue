@@ -1,8 +1,8 @@
 <template>
   <div class="box-border w-full h-full p-2">
-    <div class="grid grid-cols-4 h-full">
-      <div class="col-span-4 p-2 h-full relative bg-white m-2">
-        <ul class="h-full relative p-2">
+    <div class="grid grid-cols-4 h-full shadow-md bg-white m-2 rounded-md">
+      <div class="col-span-4 p-2 h-full">
+        <ul class="h-fulll p-2">
           <form class="items-center space-x-6">
             <div class="shrink-0 flex pl-10 items-center space-x-4 m-1 p-1">
               <img
@@ -43,28 +43,21 @@
               />
             </div>
             <div class="my-1 mr-10">
-              <label>Email :</label>
-              <input
-                class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black"
-                type="text" placeholder="abc@gmail.com"
-                v-model="person.emailName"
-              />
-            </div>
-            <div class="my-1 mr-10">
-              <label>Phone :</label>
-              <input
-                class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black"
-                type="text" placeholder="020 12 345 678"
-                v-model="person.phone"
-              />
-            </div>
-            <div class="my-1 mr-10">
               <label>Address :</label>
               <input
                 class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black"
                 type="text"
                 placeholder="Village/City/Province"
                 v-model="person.address"
+              />
+            </div>
+            <div class="my-1 mr-10">
+              <label>Phone :</label>
+              <input
+                class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black"
+                type="text"
+                placeholder="020 12 345 678"
+                v-model="person.phone"
               />
             </div>
             <div class="my-1 mr-10">
@@ -76,6 +69,24 @@
                 <option>Female</option>
               </select>
             </div>
+            <div class="my-1 mr-10">
+              <label>Email :</label>
+              <input
+                class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black"
+                type="text"
+                placeholder="abc@gmail.com"
+                v-model="person.mail"
+              />
+            </div>
+            <div class="my-1 mr-10">
+              <label>Password</label>
+              <input
+                class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black"
+                type="password"
+                placeholder=""
+                v-model="person.password"
+              />
+            </div>
 
             <div class="col-span-2 flex justify-end m-2 pr-8 space-x-4">
               <button
@@ -84,7 +95,7 @@
               >
                 Change
               </button>
-              <nuxt-link to="/profile/personal">
+              <nuxt-link to="/profile">
                 <button
                   class="bg-violet-500 text-white text-md rounded-md p-2 px-6 cursor-pointer hover:underline active:translate-y-1"
                   type="reset"
@@ -115,6 +126,7 @@ const person = ref({
   phone: "",
   address: "",
   gender: "",
+  password: "",
 });
 
 function fullName() {
