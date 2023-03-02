@@ -15,7 +15,7 @@
         </div>
       </nav>
       <!-- Router view -->
-      <div class="overflow-auto">
+      <div class=" h-full overflow-auto">
         <router-view></router-view>
       </div>
     </section>
