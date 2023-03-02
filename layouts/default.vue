@@ -2,21 +2,21 @@
   <div class="h-screen w-full flex">
     <!-- Navbar -->
     <section class="h-full w-44">
-      <div>
+      <div class="h-full">
         <navBar> </navBar>
       </div>
     </section>
 
     <section class="flex flex-col h-full w-full">
       <!-- Headbar -->
-      <nav class="">
+      <nav>
         <div>
           <headBar></headBar>
         </div>
       </nav>
       <!-- Router view -->
       <div class="h-full overflow-auto">
-        <router-view></router-view>
+        <slot></slot>
       </div>
     </section>
   </div>

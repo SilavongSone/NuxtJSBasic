@@ -41,10 +41,10 @@
         </button>
       </div>
     </section>
-
+    
     <section>
       <div>
-        <NuxtLink to="/profile/personal"
+        <NuxtLink to="/profile"
           ><li
             class="justify-between w-full bg-white rounded-full drop-shadow-md flex p-2 text-sm text-gray-500 font-semibold hover:brightness-95 hover:text-black items-center"
           >
