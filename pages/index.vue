@@ -3,25 +3,19 @@
     <section class="w-full h-full overflow-hidden col-span-2">
       <!-- total -->
       <div class="flex m-2 justify-evenly">
-        <article
-          class="cursor-pointer"
-          v-for="(item, index) in toTal"
-          :key="index"
-        >
-          <NuxtLink :to="item.path">
-            <li
-              class="flex mx-1 w-28 h-24 justify-center items-center rounded-xl hover:brightness-110"
-              :class="[item.color]"
+        <article v-for="(item, index) in toTal" :key="index">
+          <li
+            class="flex mx-1 w-28 h-24 justify-center items-center rounded-xl"
+            :class="[item.color]"
+          >
+            <div
+              class="flex flex-col justify-center items-center text-sm font-thin"
             >
-              <div
-                class="flex flex-col justify-center items-center text-sm font-thin"
-              >
-                <img class="w-12" :src="item.icon" />
-                <p class="text-center">{{ item.label }}</p>
-                <p class="text-center">{{ item.amount }}</p>
-              </div>
-            </li>
-          </NuxtLink>
+              <img class="w-12" :src="item.icon" />
+              <p class="text-center">{{ item.label }}</p>
+              <p class="text-center">{{ item.amount }}</p>
+            </div>
+          </li>
         </article>
       </div>
 
@@ -106,7 +100,7 @@
                     >
                       <td class="flex space-x-2">
                         <img
-                          class=" sm:w-12 sm:h-12 rounded-full p-1"
+                          class="sm:w-12 sm:h-12 rounded-full p-1"
                           :src="item.icon"
                           alt=""
                         />
@@ -145,7 +139,9 @@
     </section>
 
     <section class="w-full h-full overflow-hidden bg-white shadow-md">
-      <div class="m-2 overflow-hidden flex justify-center bg-white p-2 shadow-md">
+      <div
+        class="m-2 overflow-hidden flex justify-center bg-white p-2 shadow-md"
+      >
         <ul class="wrapper bg-gray-400 rounded-md">
           <header class="">
             <p class="current-date">February 2022</p>
@@ -262,10 +258,81 @@ import Owen from "../assets/img/IMG_2586.jpg";
 import Noel from "../assets/img/nut.png";
 import Pin from "../assets/img/Untitled-1.png";
 
-onMounted(() => {
-  chBar();
-  chPie();
-});
+const toTal = [
+  {
+    label: "Total Students",
+    amount: "1120",
+
+    icon: totalSTD,
+    color: "bg-purple-300",
+  },
+  {
+    label: "Total Teacher",
+    amount: "50",
+
+    icon: totalTC,
+    color: "bg-red-300",
+  },
+  {
+    label: "Total Course",
+    amount: "20",
+
+    icon: totalCourse,
+    color: "bg-blue-300",
+  },
+  {
+    label: "Total Room",
+    amount: "200",
+
+    icon: totalRoom,
+    color: "bg-orange-300",
+  },
+];
+
+//student
+const Students = [
+  {
+    icon: Anousone,
+    fname: "Anousone",
+    lname: "Silavong",
+    Score: "100/100",
+    Submit: "25/12/2022-8AM",
+    Grad: "S",
+    Pass: "Pass",
+  },
+  {
+    icon: Owen,
+    fname: "Owen",
+    lname: "MaoLaoo",
+    Score: "10/100",
+    Submit: "25/12/2022-8AM",
+    Grad: "F",
+    Pass: "Fail",
+  },
+  {
+    icon: Noel,
+    fname: "Noel",
+    lname: "Wasun",
+    Score: "60/100",
+    Submit: "25/12/2022-8AM",
+    Grad: "C",
+    Pass: "Pass",
+  },
+  {
+    icon: Pin,
+    fname: "Pin ",
+    lname: "Varorant",
+    Score: "50/100",
+    Submit: "25/12/2022-8AM",
+    Grad: "C",
+    Pass: "Pass",
+  },
+];
+
+async function testQuery() {
+  const { data } = await useFetch("https://jsonplaceholder.typicode.com/todos");
+  console.log(data.value);
+}
 
 function chBar() {
   var myChart = echarts.init(document.getElementById("chartBar"));
@@ -362,76 +429,10 @@ function chPie() {
   });
 }
 
-const toTal = [
-  {
-    label: "Total Students",
-    amount: "1120",
-    path: "/",
-    icon: totalSTD,
-    color: "bg-purple-300",
-  },
-  {
-    label: "Total Teacher",
-    amount: "50",
-    path: "/",
-    icon: totalTC,
-    color: "bg-red-300",
-  },
-  {
-    label: "Total Course",
-    amount: "20",
-    path: "/",
-    icon: totalCourse,
-    color: "bg-blue-300",
-  },
-  {
-    label: "Total Room",
-    amount: "200",
-    path: "/",
-    icon: totalRoom,
-    color: "bg-orange-300",
-  },
-];
-
-//student
-const Students = [
-  {
-    icon: Anousone,
-    fname: "Anousone",
-    lname: "Silavong",
-    Score: "100/100",
-    Submit: "25/12/2022-8AM",
-    Grad: "S",
-    Pass: "Pass",
-  },
-  {
-    icon: Owen,
-    fname: "Owen",
-    lname: "MaoLaoo",
-    Score: "10/100",
-    Submit: "25/12/2022-8AM",
-    Grad: "F",
-    Pass: "Fail",
-  },
-  {
-    icon: Noel,
-    fname: "Noel",
-    lname: "Wasun",
-    Score: "60/100",
-    Submit: "25/12/2022-8AM",
-    Grad: "C",
-    Pass: "Pass",
-  },
-  {
-    icon: Pin,
-    fname: "Pin ",
-    lname: "Varorant",
-    Score: "50/100",
-    Submit: "25/12/2022-8AM",
-    Grad: "C",
-    Pass: "Pass",
-  },
-];
+onMounted(() => {
+  chBar();
+  chPie();
+});
 </script>
 
 <style scoped>

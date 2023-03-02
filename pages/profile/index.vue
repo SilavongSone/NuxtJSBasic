@@ -1,8 +1,8 @@
 <template>
-  <div class="box-border w-full h-full p-2">
-    <div class="grid grid-cols-4 h-full">
-      <div class="col-span-4 p-2 h-full relative bg-white m-2">
-        <section class="h-full relative p-2">
+  <div class="box-border w-full h-full p-2 ">
+    <div class="grid grid-cols-4 h-full shadow-md bg-white m-2 rounded-md">
+      <div class="col-span-4 p-2 h-full">
+        <section class="h-full p-2">
           <form class="items-center space-x-6">
             <div class="shrink-0 flex pl-10 items-center space-x-4 m-1 p-1">
               <img
@@ -42,12 +42,12 @@
               </p>
             </div>
             <div class="my-1 mr-10">
-              <p>Email :</p>
+              <p>Address :</p>
               <p
                 class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black h-9"
                 type="text"
               >
-                {{ person.mail }}
+                {{ person.address }}
               </p>
             </div>
             <div class="my-1 mr-10">
@@ -60,15 +60,6 @@
               </p>
             </div>
             <div class="my-1 mr-10">
-              <p>Address :</p>
-              <p
-                class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black h-9"
-                type="text"
-              >
-                {{ person.address }}
-              </p>
-            </div>
-            <div class="my-1 mr-10">
               <p>Gender :</p>
               <p
                 class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black h-9"
@@ -77,15 +68,26 @@
                 {{ person.gender }}
               </p>
             </div>
+            <div class="my-1 mr-10">
+              <p>Email :</p>
+              <p
+                class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black h-9"
+                type="text"
+              >
+                {{ person.mail }}
+              </p>
+            </div>
 
-            <NuxtLink class="col-span-2 flex justify-end" to="/profile/edit"
-              ><button class="m-2 pr-8">
-                <input
-                  class="bg-violet-500 text-white text-md rounded-md p-2 px-6 cursor-pointer hover:underline active:translate-y-1"
-                  type="submit"
-                  value="Edit"
-                /></button
-            ></NuxtLink>
+            <div class="col-span-2 flex justify-end">
+              <NuxtLink to="/profile/edit"
+                ><button class="m-2 pr-8">
+                  <input
+                    class="bg-violet-500 text-white text-md rounded-md p-2 px-6 cursor-pointer hover:underline active:translate-y-1"
+                    type="submit"
+                    value="Edit"
+                  /></button
+              ></NuxtLink>
+            </div>
           </from>
         </section>
       </div>
