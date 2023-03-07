@@ -1,8 +1,8 @@
 <template>
   <div>
     <section class="flex flex-col p-10 justify-center items-center gap-2">
-      <input v-model="email" type="email" required />
-      <input v-model="password" type="password" required />
+      <input class="border" v-model="email" type="email" required />
+      <input class="border" v-model="password" type="password" required />
       <button @click.prevent="handleLogin">submit</button>
     </section>
   </div>
