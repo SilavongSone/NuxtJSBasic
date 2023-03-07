@@ -32,7 +32,7 @@
                 class="bg-gray-200 rounded-sm text-lg p-1 w-full text-black"
                 type="text"
                 v-model="person.firstName"
-              />
+              />npm 
             </div>
             <div class="my-1 mr-10">
               <label>Last name :</label>
@@ -120,8 +120,8 @@ const inputImage = (event) => {
 };
 
 const person = ref({
-  firstName: "",
-  lastName: "",
+  firstName: "Pro",
+  lastName: "Include",
   mail: "",
   phone: "",
   address: "",

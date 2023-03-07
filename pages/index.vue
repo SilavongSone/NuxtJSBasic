@@ -329,10 +329,6 @@ const Students = [
   },
 ];
 
-async function testQuery() {
-  const { data } = await useFetch("https://jsonplaceholder.typicode.com/todos");
-  console.log(data.value);
-}
 
 function chBar() {
   var myChart = echarts.init(document.getElementById("chartBar"));
