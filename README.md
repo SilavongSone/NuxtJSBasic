@@ -2,6 +2,8 @@
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+[Hasura Database](https://orpvwpyevnofsgyhyipz.hasura.ap-southeast-1.nhost.run/console)
+
 ## Setup
 
 Make sure to install the dependencies:
