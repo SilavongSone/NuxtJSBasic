@@ -1,52 +1,56 @@
 <template>
   <div class="grid grid-cols-3 p-2">
-    <section class="w-full h-full overflow-hidden col-span-2">
+    <div class="w-full h-full col-span-3 lg:col-span-2">
       <!-- total -->
-      <div class="flex m-2 justify-evenly">
+      <section
+        class="m-2 grid xl:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-2"
+      >
         <article v-for="(item, index) in toTal" :key="index">
-          <li
-            class="flex mx-1 w-28 h-24 justify-center items-center rounded-xl"
-            :class="[item.color]"
-          >
-            <div
-              class="flex flex-col justify-center items-center text-sm font-thin"
+          <ul class="py-2 flex justify-center items-center">
+            <li
+              class=" w-40 h-28 justify-center items-center rounded-xl"
+              :class="[item.color]"
             >
-              <img class="w-12" :src="item.icon" />
-              <p class="text-center">{{ item.label }}</p>
-              <p class="text-center">{{ item.amount }}</p>
-            </div>
-          </li>
+              <div
+                class="py-1 flex flex-col justify-center items-center text-md font-thin"
+              >
+                <Icon :name="item.icon" size="50" />
+                <p class="text-center text-black">{{ item.label }}</p>
+                <p class="text-center text-black">{{ item.amount }}</p>
+              </div>
+            </li>
+          </ul>
         </article>
-      </div>
+      </section>
 
       <!-- echarts -->
-      <div class="p-2 m-2">
-        <ul class="flex justify-evenly items-center">
+      <section class="p-2 m-2 hidden md:block">
+        <ul class="grid grid-cols-3 items-center">
           <div
-            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
+            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90 col-span-2"
           >
             <li class="p-2 absolute">Statistics</li>
-            <li class="h-44 w-96" id="chartBar"></li>
+            <li class="h-48" id="chartBar"></li>
           </div>
           <div
             class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
           >
             <li class="p-2">Courses</li>
-            <li class="h-44 w-64 p-2" id="chartPie"></li>
+            <li class="h-40" id="chartPie"></li>
           </div>
         </ul>
-      </div>
+      </section>
 
       <!-- table -->
-      <div class="w-full h-full">
-        <section class="p-2 border-2">
+      <section class="w-full h-full p-1 m-2 hidden sm:block">
+        <div class="p-2 m-2 border-2">
           <div class="overflow-hidden">
-            <ul class="flex justify-between pl-2 pt-2">
+            <ul class="flex pl-2 pt-2 bg-white justify-between">
               <li class="font-semibold">Database</li>
-              <li>
-                <button class="btn w-14 h-8">Teacher</button>
-                <button class="btn p-2 w-14 h-8">Students</button>
-                <button class="btn pr-2 w-14 h-8">Staff</button>
+              <li class="flex space-x-8 mr-4">
+                <button class="btn">Teacher</button>
+                <button class="btn">Students</button>
+                <button class="btn">Staff</button>
               </li>
             </ul>
 
@@ -134,14 +138,14 @@
               </li>
             </ul>
           </div>
-        </section>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
 
-    <section class="w-full h-full overflow-hidden bg-white shadow-md">
-      <div
-        class="m-2 overflow-hidden flex justify-center bg-white p-2 shadow-md"
-      >
+    <!-- calendar -->
+
+    <div class="w-full h-full overflow-hidden hidden lg:block">
+      <section class="m-2 overflow-hidden flex justify-center p-2">
         <ul class="wrapper bg-gray-400 rounded-md">
           <header class="">
             <p class="current-date">February 2022</p>
@@ -237,308 +241,300 @@
             </ul>
           </div>
         </ul>
-      </div>
+      </section>
 
       <div class="w-full h-full"></div>
-    </section>
+    </div>
   </div>
 </template>
 
 <script setup>
-  import * as echarts from "echarts"
-  import { GET_STUDENT } from "@/gql/query/studentQuery"
-  import { onMounted } from "vue"
-  import totalSTD from "../assets/icon/student-male.png"
-  import totalTC from "../assets/icon/school-director.png"
-  import totalCourse from "../assets/icon/course-assign.png"
-  import totalRoom from "../assets/icon/room (1).png"
+import * as echarts from "echarts";
+import { GET_STUDENT } from "@/gql/query/studentQuery";
+import { onMounted } from "vue";
 
-  //std
-  import Anousone from "../assets/img/Anousone.jpg"
-  import Owen from "../assets/img/IMG_2586.jpg"
-  import Noel from "../assets/img/nut.png"
-  import Pin from "../assets/img/Untitled-1.png"
+//std
+import Anousone from "../assets/img/Anousone.jpg";
+import Owen from "../assets/img/IMG_2586.jpg";
+import Noel from "../assets/img/nut.png";
+import Pin from "../assets/img/Untitled-1.png";
 
-  definePageMeta({
-    middleware: "user-only",
-  })
+definePageMeta({
+  middleware: "user-only",
+});
 
-  const { client } = useApolloClient()
+const { client } = useApolloClient();
 
-  const toTal = [
-    {
-      label: "Total Students",
-      amount: "1120",
+const toTal = [
+  {
+    label: "Total Students",
+    amount: "1120",
+    icon: "ph:student",
+    color: "bg-purple-300 text-purple-800",
+  },
+  {
+    label: "Total Teacher",
+    amount: "50",
+    icon: "ph:chalkboard-teacher",
+    color: "bg-red-200 text-red-800",
+  },
+  {
+    label: "Total Course",
+    amount: "20",
+    icon: "ph:books",
+    color: "bg-blue-200 text-blue-800",
+  },
+  {
+    label: "Total Room",
+    amount: "200",
+    icon: "ic:round-home",
+    color: "bg-orange-300 text-orange-800",
+  },
+];
 
-      icon: totalSTD,
-      color: "bg-purple-300",
+//student
+const Students = [
+  {
+    icon: Anousone,
+    fname: "Anousone",
+    lname: "Silavong",
+    Score: "100/100",
+    Submit: "25/12/2022-8AM",
+    Grad: "S",
+    Pass: "Pass",
+  },
+  {
+    icon: Owen,
+    fname: "Owen",
+    lname: "MaoLaoo",
+    Score: "10/100",
+    Submit: "25/12/2022-8AM",
+    Grad: "F",
+    Pass: "Fail",
+  },
+  {
+    icon: Noel,
+    fname: "Noel",
+    lname: "Wasun",
+    Score: "60/100",
+    Submit: "25/12/2022-8AM",
+    Grad: "C",
+    Pass: "Pass",
+  },
+  {
+    icon: Pin,
+    fname: "Pin ",
+    lname: "Varorant",
+    Score: "50/100",
+    Submit: "25/12/2022-8AM",
+    Grad: "C",
+    Pass: "Pass",
+  },
+];
+
+function chBar() {
+  var myChart = echarts.init(document.getElementById("chartBar"));
+  myChart.setOption({
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "shadow",
+      },
     },
-    {
-      label: "Total Teacher",
-      amount: "50",
-
-      icon: totalTC,
-      color: "bg-red-300",
+    grid: {
+      left: "3%",
+      right: "4%",
+      bottom: "3%",
+      containLabel: true,
     },
-    {
-      label: "Total Course",
-      amount: "20",
-
-      icon: totalCourse,
-      color: "bg-blue-300",
-    },
-    {
-      label: "Total Room",
-      amount: "200",
-
-      icon: totalRoom,
-      color: "bg-orange-300",
-    },
-  ]
-
-  //student
-  const Students = [
-    {
-      icon: Anousone,
-      fname: "Anousone",
-      lname: "Silavong",
-      Score: "100/100",
-      Submit: "25/12/2022-8AM",
-      Grad: "S",
-      Pass: "Pass",
-    },
-    {
-      icon: Owen,
-      fname: "Owen",
-      lname: "MaoLaoo",
-      Score: "10/100",
-      Submit: "25/12/2022-8AM",
-      Grad: "F",
-      Pass: "Fail",
-    },
-    {
-      icon: Noel,
-      fname: "Noel",
-      lname: "Wasun",
-      Score: "60/100",
-      Submit: "25/12/2022-8AM",
-      Grad: "C",
-      Pass: "Pass",
-    },
-    {
-      icon: Pin,
-      fname: "Pin ",
-      lname: "Varorant",
-      Score: "50/100",
-      Submit: "25/12/2022-8AM",
-      Grad: "C",
-      Pass: "Pass",
-    },
-  ]
-
-  function chBar() {
-    var myChart = echarts.init(document.getElementById("chartBar"))
-    myChart.setOption({
-      tooltip: {
-        trigger: "axis",
-        axisPointer: {
-          type: "shadow",
+    xAxis: [
+      {
+        type: "category",
+        data: ["2020", "2021", "2022", "2023", "2024", "2025", "2026"],
+        axisTick: {
+          alignWithLabel: true,
         },
       },
-      grid: {
-        left: "3%",
-        right: "4%",
-        bottom: "3%",
-        containLabel: true,
+    ],
+    yAxis: [
+      {
+        type: "value",
       },
-      xAxis: [
-        {
-          type: "category",
-          data: ["2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-          axisTick: {
-            alignWithLabel: true,
-          },
-        },
-      ],
-      yAxis: [
-        {
-          type: "value",
-        },
-      ],
-      series: [
-        {
-          name: "Direct",
-          type: "bar",
-          barWidth: "40%",
-          data: [
-            100,
-            200,
-            300,
-            {
-              value: 800,
-              itemStyle: {
-                color: "#DB00FF",
-              },
+    ],
+    series: [
+      {
+        name: "Direct",
+        type: "bar",
+        barWidth: "40%",
+        data: [
+          100,
+          200,
+          300,
+          {
+            value: 800,
+            itemStyle: {
+              color: "#DB00FF",
             },
-            400,
-            500,
-            600,
-          ],
+          },
+          400,
+          500,
+          600,
+        ],
+      },
+    ],
+  });
+}
+
+function chPie() {
+  var myChart = echarts.init(document.getElementById("chartPie"));
+
+  myChart.setOption({
+    tooltip: {
+      trigger: "",
+    },
+    legend: {
+      top: "",
+      left: "",
+    },
+    series: [
+      {
+        name: "",
+        fontSize: "10",
+        type: "pie",
+        radius: ["40%", "70%"],
+        avoidLabelOverlap: false,
+        label: {
+          show: false,
+          position: "center",
         },
-      ],
-    })
-  }
-
-  function chPie() {
-    var myChart = echarts.init(document.getElementById("chartPie"))
-
-    myChart.setOption({
-      tooltip: {
-        trigger: "",
-      },
-      legend: {
-        top: "",
-        left: "",
-      },
-      series: [
-        {
-          name: "",
-          fontSize: "10",
-          type: "pie",
-          radius: ["40%", "70%"],
-          avoidLabelOverlap: false,
+        emphasis: {
           label: {
-            show: false,
-            position: "center",
+            show: true,
+            fontSize: 10,
+            fontWeight: "bold",
           },
-          emphasis: {
-            label: {
-              show: true,
-              fontSize: 10,
-              fontWeight: "bold",
-            },
-          },
-          labelLine: {
-            show: false,
-          },
-          data: [
-            { value: 75, name: "In Prosess" },
-            { value: 25, name: "Prosess" },
-          ],
-          color: ["#0047FF", "#D9D9D9"],
         },
-      ],
-    })
-  }
+        labelLine: {
+          show: false,
+        },
+        data: [
+          { value: 75, name: "In Prosess" },
+          { value: 25, name: "Prosess" },
+        ],
+        color: ["#0047FF", "#D9D9D9"],
+      },
+    ],
+  });
+}
 
-  const getStudent = async () => {
-    try {
-      const req = await client.query({
-        query: GET_STUDENT,
-        variables: {},
-        fetchPolicy: "no-cache",
-      })
-      console.log(req.data)
-    } catch (error) {
-      console.log(error)
-    }
+const getStudent = async () => {
+  try {
+    const req = await client.query({
+      query: GET_STUDENT,
+      variables: {},
+      fetchPolicy: "no-cache",
+    });
+    console.log(req.data);
+  } catch (error) {
+    console.log(error);
   }
+};
 
-  onMounted(() => {
-    chBar()
-    chPie()
-    getStudent()
-  })
+onMounted(() => {
+  chBar();
+  chPie();
+  getStudent();
+});
 </script>
 
 <style scoped>
-  /* calendar Dynamic */
+/* calendar Dynamic */
 
-  .wrapper {
-    width: 500px;
-    height: 450px;
-  }
-  .wrapper header {
-    display: flex;
-    align-items: center;
-    padding: 25px 30px 10px;
-    justify-content: space-between;
-  }
-  header .icons {
-    display: flex;
-  }
-  header .icons span {
-    height: 38px;
-    width: 38px;
-    margin: 0 1px;
-    cursor: pointer;
-    color: #878787;
-    text-align: center;
-    line-height: 38px;
-    font-size: 1.9rem;
-    user-select: none;
-    border-radius: 50%;
-  }
-  .icons span:last-child {
-    margin-right: -10px;
-  }
+.wrapper {
+  width: 500px;
+  height: 450px;
+}
+.wrapper header {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+header .icons {
+  display: flex;
+}
+header .icons span {
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  color: #878787;
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+.icons span:last-child {
+  margin-right: -10px;
+}
 
-  header .current-date {
-    font-size: 1.45rem;
-    font-weight: 500;
-  }
+header .current-date {
+  font-size: 1.45rem;
+  font-weight: 500;
+}
 
-  /* bodycalendar */
-  .calendar {
-    padding: 20px;
-    background: #f2f2f2;
-    border-radius: 0%;
-  }
-  .calendar ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    text-align: center;
-  }
-  .calendar .day {
-    margin-bottom: 20px;
-  }
-  .calendar li {
-    color: #333;
-    width: calc(100% / 7);
-    font-size: 1.07rem;
-  }
-  .calendar .weeks li {
-    font-weight: 500;
-    cursor: default;
-  }
-  .calendar .day li {
-    z-index: 1;
-    cursor: pointer;
-    position: relative;
-    margin-top: 30px;
-  }
-  .day li.inactive {
-    color: #aaa;
-  }
-  .day li.active {
-    color: #f9f9f9;
-  }
-  .day li::before {
-    position: absolute;
-    content: "";
-    left: 50%;
-    top: 50%;
-    height: 40px;
-    width: 40px;
-    z-index: -1;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .day li.active::before {
-    background: #9b59b6;
-  }
-  .day li:not(.active):hover::before {
-    background: #fff;
-  }
+/* bodycalendar */
+.calendar {
+  padding: 20px;
+  background: #f2f2f2;
+  border-radius: 0%;
+}
+.calendar ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.calendar .day {
+  margin-bottom: 20px;
+}
+.calendar li {
+  color: #333;
+  width: calc(100% / 7);
+  font-size: 1.07rem;
+}
+.calendar .weeks li {
+  font-weight: 500;
+  cursor: default;
+}
+.calendar .day li {
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  margin-top: 30px;
+}
+.day li.inactive {
+  color: #aaa;
+}
+.day li.active {
+  color: #f9f9f9;
+}
+.day li::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.day li.active::before {
+  background: #9b59b6;
+}
+.day li:not(.active):hover::before {
+  background: #fff;
+}
 </style>
