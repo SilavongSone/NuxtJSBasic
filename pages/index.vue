@@ -441,12 +441,17 @@ function chPie() {
 //   }
 // };
 
+//client.mutate(update.delete.insert) && client.query(seclec)
+
 onMounted(() => {
   chBar();
   chPie();
   // getStudent();
 });
 </script>
+
+
+
 
 <style scoped>
 /* calendar Dynamic */

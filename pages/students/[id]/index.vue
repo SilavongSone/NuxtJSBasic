@@ -40,7 +40,6 @@ const getData = () => {};
 onMounted(() => {
   getData();
 });
-
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>
