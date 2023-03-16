@@ -8,7 +8,7 @@
         <article v-for="(item, index) in toTal" :key="index">
           <ul class="py-2 flex justify-center items-center">
             <li
-              class=" w-40 h-28 justify-center items-center rounded-xl"
+              class="w-40 h-28 justify-center items-center rounded-xl"
               :class="[item.color]"
             >
               <div
@@ -248,7 +248,8 @@
   </div>
 </template>
 
-<script setup>
+<script>
+// <script  setup lang='ts'>
 import * as echarts from "echarts";
 import { GET_STUDENT } from "@/gql/query/studentQuery";
 import { onMounted } from "vue";
@@ -263,7 +264,7 @@ definePageMeta({
   middleware: "user-only",
 });
 
-const { client } = useApolloClient();
+// const { client } = useApolloClient();
 
 const toTal = [
   {
@@ -427,23 +428,23 @@ function chPie() {
   });
 }
 
-const getStudent = async () => {
-  try {
-    const req = await client.query({
-      query: GET_STUDENT,
-      variables: {},
-      fetchPolicy: "no-cache",
-    });
-    console.log(req.data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const getStudent = async () => {
+//   try {
+//     const req = await client.query({
+//       query: GET_STUDENT,
+//       variables: {},
+//       fetchPolicy: "no-cache",
+//     });
+//     console.log(req.data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 onMounted(() => {
   chBar();
   chPie();
-  getStudent();
+  // getStudent();
 });
 </script>
 
