@@ -6,5 +6,6 @@ export interface Student{
     std_address: string
     std_parent: string
     std_phone: number
-    std_id:string
+    std_id: string
+    std_classroom: string
 }
