@@ -10,7 +10,7 @@
           :key="index"
         >
           <NuxtLink :to="item.path"
-            ><button class="w-full flex">
+            ><button class="w-full flex flex-wrap">
               <icon class="mr-2" :name="item.icon" size="26"></icon
               >{{ item.label }}
             </button></NuxtLink

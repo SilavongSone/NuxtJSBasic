@@ -95,9 +95,7 @@ export default {
     return {
       fName: "Pro",
       lName: "Include",
-      Nname: "",
-      age: 20,
-      gMail: "ProInclude@gmail.com",
+      gMail: "IncludePro@gmail.com",
 
       // Array
       hobby: ["Playingame", "listenMusic"],

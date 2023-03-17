@@ -1,52 +1,56 @@
 <template>
   <div class="grid grid-cols-3 p-2">
-    <section class="w-full h-full overflow-hidden col-span-2">
+    <div class="w-full h-full col-span-3 lg:col-span-2">
       <!-- total -->
-      <div class="flex m-2 justify-evenly">
+      <section
+        class="m-2 grid xl:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-2"
+      >
         <article v-for="(item, index) in toTal" :key="index">
-          <li
-            class="flex mx-1 w-28 h-24 justify-center items-center rounded-xl"
-            :class="[item.color]"
-          >
-            <div
-              class="flex flex-col justify-center items-center text-sm font-thin"
+          <ul class="py-2 flex justify-center items-center">
+            <li
+              class=" w-40 h-28 justify-center items-center rounded-xl"
+              :class="[item.color]"
             >
-              <img class="w-12" :src="item.icon" />
-              <p class="text-center">{{ item.label }}</p>
-              <p class="text-center">{{ item.amount }}</p>
-            </div>
-          </li>
+              <div
+                class="py-1 flex flex-col justify-center items-center text-md font-thin"
+              >
+                <Icon :name="item.icon" size="50" />
+                <p class="text-center text-black">{{ item.label }}</p>
+                <p class="text-center text-black">{{ item.amount }}</p>
+              </div>
+            </li>
+          </ul>
         </article>
-      </div>
+      </section>
 
       <!-- echarts -->
-      <div class="p-2 m-2">
-        <ul class="flex justify-evenly items-center">
+      <section class="p-2 m-2 hidden md:block">
+        <ul class="grid grid-cols-3 items-center">
           <div
-            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
+            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90 col-span-2"
           >
             <li class="p-2 absolute">Statistics</li>
-            <li class="h-44 w-96" id="chartBar"></li>
+            <li class="h-48" id="chartBar"></li>
           </div>
           <div
             class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
           >
             <li class="p-2">Courses</li>
-            <li class="h-44 w-64 p-2" id="chartPie"></li>
+            <li class="h-40" id="chartPie"></li>
           </div>
         </ul>
-      </div>
+      </section>
 
       <!-- table -->
-      <div class="w-full h-full">
-        <section class="p-2 border-2">
+      <section class="w-full h-full p-1 m-2 hidden sm:block">
+        <div class="p-2 m-2 border-2">
           <div class="overflow-hidden">
-            <ul class="flex justify-between pl-2 pt-2">
+            <ul class="flex pl-2 pt-2 bg-white justify-between">
               <li class="font-semibold">Database</li>
-              <li>
-                <button class="btn w-14 h-8">Teacher</button>
-                <button class="btn p-2 w-14 h-8">Students</button>
-                <button class="btn pr-2 w-14 h-8">Staff</button>
+              <li class="flex space-x-8 mr-4">
+                <button class="btn">Teacher</button>
+                <button class="btn">Students</button>
+                <button class="btn">Staff</button>
               </li>
             </ul>
 
@@ -134,14 +138,14 @@
               </li>
             </ul>
           </div>
-        </section>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
 
-    <section class="w-full h-full overflow-hidden bg-white shadow-md">
-      <div
-        class="m-2 overflow-hidden flex justify-center bg-white p-2 shadow-md"
-      >
+    <!-- calendar -->
+
+    <div class="w-full h-full overflow-hidden hidden lg:block">
+      <section class="m-2 overflow-hidden flex justify-center p-2">
         <ul class="wrapper bg-gray-400 rounded-md">
           <header class="">
             <p class="current-date">February 2022</p>
@@ -237,20 +241,17 @@
             </ul>
           </div>
         </ul>
-      </div>
+      </section>
 
       <div class="w-full h-full"></div>
-    </section>
+    </div>
   </div>
 </template>
 
 <script setup>
 import * as echarts from "echarts";
+import { GET_STUDENT } from "@/gql/query/studentQuery";
 import { onMounted } from "vue";
-import totalSTD from "../assets/icon/student-male.png";
-import totalTC from "../assets/icon/school-director.png";
-import totalCourse from "../assets/icon/course-assign.png";
-import totalRoom from "../assets/icon/room (1).png";
 
 //std
 import Anousone from "../assets/img/Anousone.jpg";
@@ -258,34 +259,36 @@ import Owen from "../assets/img/IMG_2586.jpg";
 import Noel from "../assets/img/nut.png";
 import Pin from "../assets/img/Untitled-1.png";
 
+definePageMeta({
+  middleware: "user-only",
+});
+
+const { client } = useApolloClient();
+
 const toTal = [
   {
     label: "Total Students",
     amount: "1120",
-
-    icon: totalSTD,
-    color: "bg-purple-300",
+    icon: "ph:student",
+    color: "bg-purple-300 text-purple-800",
   },
   {
     label: "Total Teacher",
     amount: "50",
-
-    icon: totalTC,
-    color: "bg-red-300",
+    icon: "ph:chalkboard-teacher",
+    color: "bg-red-200 text-red-800",
   },
   {
     label: "Total Course",
     amount: "20",
-
-    icon: totalCourse,
-    color: "bg-blue-300",
+    icon: "ph:books",
+    color: "bg-blue-200 text-blue-800",
   },
   {
     label: "Total Room",
     amount: "200",
-
-    icon: totalRoom,
-    color: "bg-orange-300",
+    icon: "ic:round-home",
+    color: "bg-orange-300 text-orange-800",
   },
 ];
 
@@ -328,11 +331,6 @@ const Students = [
     Pass: "Pass",
   },
 ];
-
-async function testQuery() {
-  const { data } = await useFetch("https://jsonplaceholder.typicode.com/todos");
-  console.log(data.value);
-}
 
 function chBar() {
   var myChart = echarts.init(document.getElementById("chartBar"));
@@ -429,11 +427,30 @@ function chPie() {
   });
 }
 
+const getStudent = async () => {
+  try {
+    const req = await client.query({
+      query: GET_STUDENT,
+      variables: {},
+      fetchPolicy: "no-cache",
+    });
+    console.log(req.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//client.mutate(update.delete.insert) && client.query(seclec)
+
 onMounted(() => {
   chBar();
   chPie();
+  getStudent();
 });
 </script>
+
+
+
 
 <style scoped>
 /* calendar Dynamic */
