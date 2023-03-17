@@ -247,9 +247,7 @@
     </div>
   </div>
 </template>
-
-<script>
-// <script  setup lang='ts'>
+<script  setup lang='ts'>
 import * as echarts from "echarts";
 import { GET_STUDENT } from "@/gql/query/studentQuery";
 import { onMounted } from "vue";
