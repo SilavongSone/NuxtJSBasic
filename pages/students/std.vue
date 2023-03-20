@@ -1,24 +1,33 @@
 <template>
-  <div class="flex h-4/5">
-    <div class="flex-col w-full">
-      <!-- Headbar -->
-      <section class="bg-blue-500">
-        <input type="text" v-model="search" class="border border-red-400 m-4" />
+  <div class="bg-violet-50 w-full h-full">
+    <div class="flex-col w-full relative">
+      <section class="sticky top-0 bg-white m-1">
+        <input
+          type="text"
+          placeholder="Search"
+          v-model="search"
+          class="border rounded-full w-96 px-2 m-4"
+        />
+        <Icon
+          class="bg-violet-500 w-7 h-7 rounded-full p-1"
+          name="fluent:search-48-regular"
+          size="28"
+        ></Icon>
       </section>
-      <!-- Router view -->
 
       <section class="h-full w-full overflow-auto">
-        <ul class="p-1 bg-red-500" v-for="item in students" :key="item.id">
+        <ol class="p-1" v-for="item in students" :key="item.id">
           <NuxtLink :to="`/students/${item.id}`"
-            ><li class="bg-pink-500 grid grid-flow-col">
-              <p>{{ item.std_fname }} {{ item.std_lname }}</p>
-              <p>{{ item.std_id }}</p>
-              <!-- classroom -->
-              <p>{{ "-" }}</p>
-              <p>{{ "-" }}</p>
+            ><li
+              class="grid grid-cols-4 h-16 bg-white shadow-md p-2 hover:bg-violet-500 rounded-sm"
+            >
+              <p>Name: {{ item.std_fname }} {{ item.std_lname }}</p>
+              <p>ID: {{ item.std_id }}</p>
+              <p>Birth Day: {{ item.std_date_of_birth }}</p>
+              <p>Address: {{ item.std_address }}</p>
             </li></NuxtLink
           >
-        </ul>
+        </ol>
       </section>
     </div>
   </div>
@@ -31,7 +40,6 @@ import { Student } from "~~/types/student";
 definePageMeta({
   middleware: "user-only",
 });
-
 
 const { client } = useApolloClient();
 
@@ -50,8 +58,9 @@ const getStudent = async () => {
                 _ilike: `%${search.value}%`,
               },
             },
+
             {
-              std_gender: {
+              std_id: {
                 _ilike: `%${search.value}%`,
               },
             },
