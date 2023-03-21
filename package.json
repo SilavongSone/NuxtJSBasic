@@ -8,8 +8,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxtjs/apollo": "^5.0.0-alpha.5",
+    "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@nuxtjs/tailwindcss": "^6.4.1",
+    "@vue/apollo-composable": "^4.0.0-beta.4",
     "nuxt": "^3.2.2",
     "nuxt-icon": "^0.3.2"
   },
