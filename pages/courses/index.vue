@@ -1,6 +1,8 @@
 <template>
   <div class="relative">
-    <section class="bg-white w-full shadow-md overflow-hidden h-16">
+    <section
+      class="bg-white w-full shadow-md overflow-hidden h-16 sticky top-0"
+    >
       <div class="flex w-full p-1">
         <ul
           class="flex p-4 ml-4 mt-3 items-center text-sm rounded-xl w-32 h-10 bg-white shadow-md text-violet-500 hover:text-white hover:bg-violet-500 hover:cursor-pointer overflow-hidden"
@@ -24,7 +26,9 @@
 
     <!-- body -->
     <section class="bg-white w-full h-full">
-      <ul class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:lg:grid-cols-4">
+      <ul
+        class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:lg:grid-cols-4"
+      >
         <li
           class="m-4 bg-white overflow-hidden w-64 rounded-lg space-x-2 shadow-md hover:brightness-95 cursor-pointer h-60"
           v-for="(item, index) in course"

@@ -48,9 +48,9 @@
             <ul class="flex pl-2 pt-2 bg-white justify-between">
               <li class="font-semibold">Database</li>
               <li class="flex space-x-8 mr-4">
-                <button class="btn">Teacher</button>
-                <button class="btn">Students</button>
-                <button class="btn">Staff</button>
+                <button class="btn p-1">Teacher</button>
+                <button class="btn p-1">Students</button>
+                <button class="btn p-1">Staff</button>
               </li>
             </ul>
 
@@ -157,7 +157,7 @@
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-10 h-10 hover:text-white"
+                  class="w-10 h-10 text-white hover:text-violet-500"
                 >
                   <path
                     stroke-linecap="round"
@@ -173,7 +173,7 @@
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-10 h-10 hover:text-white"
+                  class="w-10 h-10 text-white hover:text-violet-500"
                 >
                   <path
                     stroke-linecap="round"
@@ -242,12 +242,10 @@
           </div>
         </ul>
       </section>
-
-      <div class="w-full h-full"></div>
     </div>
   </div>
 </template>
-<script  setup lang='ts'>
+<script setup lang="ts">
 import * as echarts from "echarts";
 import { GET_STUDENT } from "@/gql/query/studentQuery";
 import { onMounted } from "vue";
@@ -447,9 +445,6 @@ onMounted(() => {
   // getStudent();
 });
 </script>
-
-
-
 
 <style scoped>
 /* calendar Dynamic */

@@ -1,6 +1,8 @@
 <template>
   <div class="h-full w-full">
-    <section class="bg-white w-full h-full rounded-md text-xs shadow-md">
+    <section
+      class="bg-white w-full h-full rounded-md text-xs shadow-md relative"
+    >
       <div class="w-36 text-gray-500 p-2">
         <div class="flex items-center justify-center">
           <Nuxt-link to="/"
@@ -17,6 +19,15 @@
             </button></NuxtLink
           >
         </div>
+      </div>
+      <div
+        class="absolute bottom-10 left-6 bg-white hover:drop-shadow-md p-1 rounded-sm"
+      >
+        <NuxtLink to="/login"
+          ><span class="text-red-500 text-2xl cursor-pointer hover:underline"
+            >LOGOUT</span
+          ></NuxtLink
+        >
       </div>
     </section>
   </div>
