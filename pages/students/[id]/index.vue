@@ -49,20 +49,20 @@
 <script setup lang="ts">
 import { GET_STUDENT_PK } from "~~/gql/query/studentQuery";
 import { Student } from "~~/types/student";
-const { client } = useApolloClient();
 const { id } = useRoute().params;
 
 const student = ref<Student>();
 
 const getData = async () => {
-  const { data } = await client.query({
-    query: GET_STUDENT_PK,
-    variables: {
-      id,
-    },
+  const { data, error } = await useAsyncQuery<any>(GET_STUDENT_PK, {
+    id,
   });
-  console.log(data);
-  student.value = data.student;
+  if (error.value) {
+    console.error(error.value);
+    return;
+  }
+  console.log(data.value);
+  student.value = data.value.student;
 };
 
 onMounted(() => {

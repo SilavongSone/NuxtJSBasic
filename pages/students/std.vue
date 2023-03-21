@@ -41,38 +41,15 @@ definePageMeta({
   middleware: "user-only",
 });
 
-const { client } = useApolloClient();
-
 const students = ref<Student[]>([]);
 const search = ref("");
 
 const getStudent = async () => {
-  try {
-    const { data } = await client.query({
-      query: GET_STUDENT,
-      variables: {
-        where: {
-          _or: [
-            {
-              std_fname: {
-                _ilike: `%${search.value}%`,
-              },
-            },
-
-            {
-              std_id: {
-                _ilike: `%${search.value}%`,
-              },
-            },
-          ],
-        },
-      },
-      fetchPolicy: "no-cache",
-    });
-    students.value = data.student;
-  } catch (error) {
-    console.log(error);
+  const { data, error } = await useAsyncQuery(GET_STUDENT, {});
+  if (error.value) {
+    console.error(error.value);
   }
+  console.log(data.value);
 };
 
 watchEffect(() => {
