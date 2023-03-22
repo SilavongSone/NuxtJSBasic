@@ -19,12 +19,12 @@
         <ol class="p-1" v-for="item in students" :key="item.id">
           <NuxtLink :to="`/students/${item.id}`"
             ><li
-              class="grid grid-cols-4 h-16 bg-white shadow-md p-2 hover:bg-violet-500 rounded-sm"
+              class="items-center grid grid-cols-4 h-16 bg-white shadow-md p-2 hover:bg-violet-500 rounded-sm"
             >
               <p>Name: {{ item.std_fname }} {{ item.std_lname }}</p>
               <p>ID: {{ item.std_id }}</p>
-              <p>Birth Day: {{ item.std_date_of_birth }}</p>
-              <p>Address: {{ item.std_address }}</p>
+              <p>Classroom: {{ item.std_date_of_birth }}</p>
+              <p>Years: {{ item.std_address }}</p>
             </li></NuxtLink
           >
         </ol>
@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { GET_STUDENT } from "~~/gql/query/studentQuery";
+import { GET_STUDENT, GET_STUDENT_PK } from "~~/gql/query/studentQuery";
 import { Student } from "~~/types/student";
 
 definePageMeta({
@@ -45,11 +45,19 @@ const students = ref<Student[]>([]);
 const search = ref("");
 
 const getStudent = async () => {
-  const { data, error } = await useAsyncQuery(GET_STUDENT, {});
+  const { data, error } = await useAsyncQuery<any>(GET_STUDENT, {
+    where: {
+      std_fname: {
+        _ilike: `%${search.value}%`,
+      },
+    },
+  });
   if (error.value) {
     console.error(error.value);
   }
-  console.log(data.value);
+  console.log(data.value.student);
+  const { student: std } = data.value;
+  students.value = std;
 };
 
 watchEffect(() => {
