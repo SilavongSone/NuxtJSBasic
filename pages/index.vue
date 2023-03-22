@@ -1,266 +1,275 @@
 <template>
-  <div class="grid grid-cols-3 p-2">
-    <div class="w-full h-full col-span-3 lg:col-span-2">
-      <!-- total -->
-      <section
-        class="m-2 grid xl:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-2"
-      >
-        <article v-for="(item, index) in toTal" :key="index">
-          <ul class="py-2 flex justify-center items-center">
-            <li
-              class="w-40 h-28 justify-center items-center rounded-xl"
-              :class="[item.color]"
-            >
-              <div
-                class="py-1 flex flex-col justify-center items-center text-md font-thin"
+  <div class="box-border fixed">
+    <div class="grid grid-cols-3 w-full h-screen">
+      <div class="w-full h-full col-span-3 lg:col-span-2">
+        <!-- total -->
+        <section
+          class="grid xl:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-2"
+        >
+          <article v-for="(item, index) in toTal" :key="index">
+            <ul class="py-2 flex justify-center items-center">
+              <li
+                class="w-40 h-28 justify-center items-center rounded-xl"
+                :class="[item.color]"
               >
-                <Icon :name="item.icon" size="50" />
-                <p class="text-center text-black">{{ item.label }}</p>
-                <p class="text-center text-black">{{ item.amount }}</p>
-              </div>
-            </li>
-          </ul>
-        </article>
-      </section>
-
-      <!-- echarts -->
-      <section class="p-2 m-2 hidden md:block">
-        <ul class="grid grid-cols-3 items-center">
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90 col-span-2"
-          >
-            <li class="p-2 absolute">Statistics</li>
-            <li class="h-48" id="chartBar"></li>
-          </div>
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
-          >
-            <li class="p-2">Courses</li>
-            <li class="h-40" id="chartPie"></li>
-          </div>
-        </ul>
-      </section>
-
-      <!-- table -->
-      <section class="w-full h-full p-1 m-2 hidden sm:block">
-        <div class="p-2 m-2 border-2">
-          <div class="overflow-hidden">
-            <ul class="flex pl-2 pt-2 bg-white justify-between">
-              <li class="font-semibold">Database</li>
-              <li class="flex space-x-8 mr-4">
-                <button class="btn p-1">Teacher</button>
-                <button class="btn p-1">Students</button>
-                <button class="btn p-1">Staff</button>
+                <div
+                  class="py-1 flex flex-col justify-center items-center text-md font-thin"
+                >
+                  <Icon :name="item.icon" size="50" />
+                  <p class="text-center text-black">{{ item.label }}</p>
+                  <p class="text-center text-black">{{ item.amount }}</p>
+                </div>
               </li>
             </ul>
+          </article>
+        </section>
 
-            <ul>
-              <li class="m-2 text-sm">
-                <table class="table-fixed w-full border-2">
-                  <thead class="border-2">
-                    <tr class="font-medium">
-                      <td>
-                        <p
-                          class="flex justify-center items-center overflow-hidden"
-                        >
-                          Students
-                        </p>
-                      </td>
-                      <td>
-                        <p
-                          class="flex justify-center items-center overflow-hidden"
-                        >
-                          Score
-                        </p>
-                      </td>
-                      <td>
-                        <p
-                          class="flex justify-center items-center overflow-hidden"
-                        >
-                          Submited
-                        </p>
-                      </td>
-                      <td>
-                        <p
-                          class="flex justify-center items-center overflow-hidden"
-                        >
-                          Grad
-                        </p>
-                      </td>
-                      <td>
-                        <p
-                          class="flex justify-center items-center overflow-hidden"
-                        >
-                          Pass/Fail
-                        </p>
-                      </td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      class="cursor-pointer bg-white hover:brightness-90"
-                      v-for="(item, index) in Students"
-                      :key="index"
-                    >
-                      <td class="flex space-x-2">
-                        <img
-                          class="sm:w-12 sm:h-12 rounded-full p-1"
-                          :src="item.icon"
-                          alt=""
-                        />
-                        <p class="flex justify-center items-center">
-                          {{ item.fname }} {{ item.lname }}
-                        </p>
-                      </td>
-                      <td>
-                        <p class="flex justify-center items-center">
-                          {{ item.Score }}
-                        </p>
-                      </td>
-                      <td>
-                        <p class="flex justify-center items-center">
-                          {{ item.Submit }}
-                        </p>
-                      </td>
-                      <td>
-                        <p class="flex justify-center items-center">
-                          {{ item.Grad }}
-                        </p>
-                      </td>
-                      <td>
-                        <p class="flex justify-center items-center">
-                          {{ item.Pass }}
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- calendar -->
-
-    <div class="w-full h-full overflow-hidden hidden lg:block">
-      <section class="m-2 overflow-hidden flex justify-center p-2">
-        <ul class="wrapper bg-gray-400 rounded-md">
-          <header class="">
-            <p class="current-date">February 2022</p>
-            <div class="icons">
-              <span id="prev" class="material-symbols-rounded"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-10 h-10 text-white hover:text-violet-500"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </span>
-              <span id="next" class="material-symbols-rounded"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-10 h-10 text-white hover:text-violet-500"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </span>
+        <!-- echarts -->
+        <section class="p-2 m-2 hidden md:block">
+          <ul class="grid grid-cols-3 items-center">
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90 col-span-2"
+            >
+              <li class="p-2 absolute">Statistics</li>
+              <li class="h-48" id="chartBar"></li>
             </div>
-          </header>
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
+            >
+              <li class="p-2">Courses</li>
+              <li class="h-40" id="chartPie"></li>
+            </div>
+          </ul>
+        </section>
 
-          <div class="calendar">
-            <ul class="weeks">
-              <li class="px-4">Sun</li>
-              <li class="px-4">Mon</li>
-              <li class="px-4">Tue</li>
-              <li class="px-4">Wed</li>
-              <li class="px-4">Thu</li>
-              <li class="px-4">Fri</li>
-              <li class="px-4">Sat</li>
-            </ul>
-            <ul class="day text-xs">
-              <li class="inactive">29</li>
-              <li class="inactive">30</li>
-              <li class="inactive">31</li>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-              <li>6</li>
-              <li>7</li>
-              <li>8</li>
-              <li>9</li>
-              <li>10</li>
-              <li>11</li>
-              <li>12</li>
-              <li>13</li>
-              <li>14</li>
-              <li>15</li>
-              <li>16</li>
-              <li>17</li>
-              <li>18</li>
-              <li>19</li>
-              <li>20</li>
-              <li>21</li>
-              <li>22</li>
-              <li class="active">23</li>
-              <li>24</li>
-              <li>25</li>
-              <li>26</li>
-              <li>27</li>
-              <li>28</li>
-              <li class="inactive">1</li>
-              <li class="inactive">2</li>
-              <li class="inactive">3</li>
-              <li class="inactive">4</li>
-              <li class="inactive">5</li>
-              <li class="inactive">6</li>
-              <li class="inactive">7</li>
-              <li class="inactive">8</li>
-              <li class="inactive">9</li>
-              <li class="inactive">10</li>
-              <li class="inactive">11</li>
-            </ul>
+        <!-- table -->
+        <section class="w-full h-full p-1 m-2 hidden sm:block">
+          <div class="p-2 m-2 border-2">
+            <div class="overflow-hidden">
+              <ul class="flex pl-2 pt-2 bg-white justify-between">
+                <li class="font-semibold">Database</li>
+                <li class="flex space-x-8 mr-4">
+                  <button class="btn p-1">Teacher</button>
+                  <button class="btn p-1">Students</button>
+                  <button class="btn p-1">Staff</button>
+                </li>
+              </ul>
+
+              <ul>
+                <li class="m-2 text-sm p-2">
+                  <table class="table-fixed w-full border-2 p-2">
+                    <thead class="border-2">
+                      <tr class="font-medium">
+                        <td>
+                          <p
+                            class="flex justify-center items-center overflow-hidden m-2"
+                          >
+                            Students Name
+                          </p>
+                        </td>
+                        <td>
+                          <p
+                            class="flex justify-center items-center overflow-hidden"
+                          >
+                            Score
+                          </p>
+                        </td>
+                        <td>
+                          <p
+                            class="flex justify-center items-center overflow-hidden"
+                          >
+                            Submited
+                          </p>
+                        </td>
+                        <td>
+                          <p
+                            class="flex justify-center items-center overflow-hidden"
+                          >
+                            Grad
+                          </p>
+                        </td>
+                        <td>
+                          <p
+                            class="flex justify-center items-center overflow-hidden"
+                          >
+                            Pass/Fail
+                          </p>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        class="cursor-pointer bg-white p-2 hover:brightness-90"
+                        v-for="(item, index) in students"
+                        :key="index"
+                      >
+                        <td class="flex space-x-2">
+                          <p class="flex justify-center items-center p-1">
+                            {{ item.std_fname }} {{ item.std_lname }}
+                          </p>
+                        </td>
+                        <td>
+                          <p class="flex justify-center items-center">
+                            {{ item.std_date_of_birth }}
+                          </p>
+                        </td>
+                        <td>
+                          <p class="flex justify-center items-center">
+                            {{ item.std_parent }}
+                          </p>
+                        </td>
+                        <td>
+                          <p class="flex justify-center items-center">
+                            {{ item.std_gender }}
+                          </p>
+                        </td>
+                        <td>
+                          <p class="flex justify-center items-center">
+                            {{ item.std_parent_phone }}
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+              </ul>
+            </div>
           </div>
-        </ul>
-      </section>
+        </section>
+      </div>
+
+      <!-- calendar -->
+
+      <div class="w-full h-full overflow-hidden hidden lg:block">
+        <section class="m-2 overflow-hidden flex justify-center p-2">
+          <ul class="wrapper bg-gray-400 rounded-md">
+            <header class="">
+              <p class="current-date">February 2022</p>
+              <div class="icons">
+                <span id="prev" class="material-symbols-rounded"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-10 h-10 text-white hover:text-violet-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <span id="next" class="material-symbols-rounded"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-10 h-10 text-white hover:text-violet-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </header>
+
+            <div class="calendar">
+              <ul class="weeks">
+                <li class="px-4">Sun</li>
+                <li class="px-4">Mon</li>
+                <li class="px-4">Tue</li>
+                <li class="px-4">Wed</li>
+                <li class="px-4">Thu</li>
+                <li class="px-4">Fri</li>
+                <li class="px-4">Sat</li>
+              </ul>
+              <ul class="day text-xs">
+                <li class="inactive">29</li>
+                <li class="inactive">30</li>
+                <li class="inactive">31</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+                <li>19</li>
+                <li>20</li>
+                <li>21</li>
+                <li>22</li>
+                <li class="active">23</li>
+                <li>24</li>
+                <li>25</li>
+                <li>26</li>
+                <li>27</li>
+                <li>28</li>
+                <li class="inactive">1</li>
+                <li class="inactive">2</li>
+                <li class="inactive">3</li>
+                <li class="inactive">4</li>
+                <li class="inactive">5</li>
+                <li class="inactive">6</li>
+                <li class="inactive">7</li>
+                <li class="inactive">8</li>
+                <li class="inactive">9</li>
+                <li class="inactive">10</li>
+                <li class="inactive">11</li>
+              </ul>
+            </div>
+          </ul>
+        </section>
+      </div>
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import * as echarts from "echarts";
-import { GET_STUDENT } from "@/gql/query/studentQuery";
+import { GET_STUDENT_LIMIT } from "~~/gql/query/studentQuery";
+import { Student } from "~~/types/student";
 import { onMounted } from "vue";
-
-//std
-import Anousone from "../assets/img/Anousone.jpg";
-import Owen from "../assets/img/IMG_2586.jpg";
-import Noel from "../assets/img/nut.png";
-import Pin from "../assets/img/Untitled-1.png";
 
 definePageMeta({
   middleware: "user-only",
 });
 
-// const { client } = useApolloClient();
+const students = ref<Student[]>([]);
+const search = ref("");
+
+//
+const getStudent = async () => {
+  const { data, error } = await useAsyncQuery<any>(GET_STUDENT_LIMIT, {});
+  if (error.value) {
+    console.error(error.value);
+  }
+  console.log(data.value.student);
+  const { student: std } = data.value;
+  students.value = std;
+};
+
+watchEffect(() => {
+  getStudent();
+});
 
 const toTal = [
   {
@@ -286,46 +295,6 @@ const toTal = [
     amount: "200",
     icon: "ic:round-home",
     color: "bg-orange-300 text-orange-800",
-  },
-];
-
-//student
-const Students = [
-  {
-    icon: Anousone,
-    fname: "Anousone",
-    lname: "Silavong",
-    Score: "100/100",
-    Submit: "25/12/2022-8AM",
-    Grad: "S",
-    Pass: "Pass",
-  },
-  {
-    icon: Owen,
-    fname: "Owen",
-    lname: "MaoLaoo",
-    Score: "10/100",
-    Submit: "25/12/2022-8AM",
-    Grad: "F",
-    Pass: "Fail",
-  },
-  {
-    icon: Noel,
-    fname: "Noel",
-    lname: "Wasun",
-    Score: "60/100",
-    Submit: "25/12/2022-8AM",
-    Grad: "C",
-    Pass: "Pass",
-  },
-  {
-    icon: Pin,
-    fname: "Pin ",
-    lname: "Varorant",
-    Score: "50/100",
-    Submit: "25/12/2022-8AM",
-    Grad: "C",
-    Pass: "Pass",
   },
 ];
 
@@ -424,25 +393,9 @@ function chPie() {
   });
 }
 
-// const getStudent = async () => {
-//   try {
-//     const req = await client.query({
-//       query: GET_STUDENT,
-//       variables: {},
-//       fetchPolicy: "no-cache",
-//     });
-//     console.log(req.data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-//client.mutate(update.delete.insert) && client.query(seclec)
-
 onMounted(() => {
   chBar();
   chPie();
-  // getStudent();
 });
 </script>
 
@@ -486,7 +439,7 @@ header .current-date {
 /* bodycalendar */
 .calendar {
   padding: 20px;
-  background: #f2f2f2;
+  background: #ffffff;
   border-radius: 0%;
 }
 .calendar ul {
@@ -531,9 +484,9 @@ header .current-date {
   transform: translate(-50%, -50%);
 }
 .day li.active::before {
-  background: #9b59b6;
+  background: #ba7dd2;
 }
 .day li:not(.active):hover::before {
-  background: #fff;
+  background: #ba7dd2;
 }
 </style>

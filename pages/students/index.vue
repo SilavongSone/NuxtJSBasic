@@ -24,33 +24,33 @@
             <option>IT13M1</option>
             <option>IT13M2</option>
             <option>IT13M3</option>
-            <option>IT13M4</option>
-            <option>IT13M5</option>
-            <option>IT13M6</option>
-            <option>IT13M7</option>
-            <option>IT13M8</option>
+          </div>
+          <div>
+            <option>IT12M1</option>
+            <option>IT12M2</option>
+            <option>IT12M3</option>
           </div>
 
           <div>
             <option>CB13M1</option>
             <option>CB13M2</option>
             <option>CB13M3</option>
-            <option>CB13M4</option>
-            <option>CB13M5</option>
-            <option>CB13M6</option>
-            <option>CB13M7</option>
-            <option>CB13M8</option>
+          </div>
+          <div>
+            <option>CB12M1</option>
+            <option>CB12M2</option>
+            <option>CB12M3</option>
           </div>
 
           <div>
             <option>EL13M1</option>
             <option>EL13M2</option>
             <option>EL13M3</option>
-            <option>EL13M4</option>
-            <option>EL13M5</option>
-            <option>EL13M6</option>
-            <option>El13M7</option>
-            <option>EL13M8</option>
+          </div>
+          <div>
+            <option>EL12M1</option>
+            <option>EL12M2</option>
+            <option>EL12M3</option>
           </div>
         </select>
       </div>

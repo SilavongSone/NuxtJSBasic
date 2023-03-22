@@ -21,13 +21,17 @@
         </div>
       </div>
       <div
-        class="absolute bottom-10 left-6 bg-white hover:drop-shadow-md p-1 rounded-sm"
+        class="absolute bottom-10 left-4 bg-white hover:drop-shadow-md p-1 rounded-sm hover:underline text-red-500 flex justify-center items-center border-2 border-red-500"
       >
         <NuxtLink to="/login"
-          ><span class="text-red-500 text-2xl cursor-pointer hover:underline"
-            >LOGOUT</span
-          ></NuxtLink
-        >
+          ><span class="text-red-500 text-xl">LOGOUT</span>
+          <Icon
+            name="fluent:door-arrow-right-16-regular"
+            size="30"
+            color="red
+          "
+          ></Icon
+        ></NuxtLink>
       </div>
     </section>
   </div>

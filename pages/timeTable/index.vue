@@ -2,7 +2,7 @@
   <div class="bg-violet-50 w-full h-full">
     <section class="grid grid-flow-col ml-10">
       <div class="flex items-center p-2">
-        <p>Department :</p>
+        <p>Department:</p>
         <select>
           <option>Information Technology</option>
           <option>Electonic</option>
@@ -10,7 +10,7 @@
         </select>
       </div>
       <div class="flex items-center">
-        <p>Years :</p>
+        <p>Years:</p>
         <select>
           <option>1</option>
           <option>2</option>
@@ -18,7 +18,7 @@
         </select>
       </div>
       <div class="flex items-center">
-        <p>Classroom :</p>
+        <p>Classroom:</p>
         <select>
           <option>IT13M1</option>
           <option>CT13M1</option>
