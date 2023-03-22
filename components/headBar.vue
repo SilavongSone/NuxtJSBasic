@@ -10,43 +10,11 @@
       </div>
     </section>
 
-    <section class="drop-shadow-md bg-gray-200 w-52 rounded-full">
-      <label
-        for="default-search"
-        class="text-sm font-medium sr-only dark:text-white"
-        >Search</label
-      >
-      <div class="relative">
-        <input
-          type="search"
-          id="default-search"
-          class="p-2 text-xs rounded-full bg- bg-gray-200 text-black m-1"
-          placeholder="Search..."
-        />
-        <button
-          type="submit"
-          class="absolute p-1 m-1.5 left-40 bg-violet-400 rounded-full hover:bg-violet-500"
-        >
-          <svg
-            class="w-5 h-5 text-gray-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            ></path>
-          </svg>
-        </button>
-      </div>
-    </section>
-    
     <section>
       <div>
         <NuxtLink to="/profile"
-          ><li
-            class="justify-between w-full bg-white rounded-full drop-shadow-md flex p-2 text-sm text-gray-500 font-semibold hover:brightness-95 hover:text-black items-center"
+          ><div
+            class="justify-between w-full bg-white rounded-full drop-shadow-md flex p-1 text-sm text-gray-500 font-semibold hover:brightness-95 hover:text-black items-center"
           >
             <img
               class="h-10 w-10 rounded-full cursor-pointer hover:brightness-75"
@@ -64,24 +32,15 @@
             </div>
 
             <ul
-              class="bg-gray-200 rounded-full cursor-pointer hover:bg-gray-300 h-8 w-8"
+              class="bg-gray-200 rounded-full cursor-pointer hover:bg-gray-300 flex justify-center items-center m-1 w-8 h-8"
             >
-              <img
-                class="w-6 h-6 m-1"
-                src="../assets/icon/appointment-reminders.png"
-                alt=""
-              />
+              <Icon name="fluent:settings-16-filled" size="20"></Icon>
             </ul>
-
             <ul
-              class="bg-gray-200 rounded-full cursor-pointer hover:bg-gray-300 h-8 w-8"
+              class="bg-gray-200 rounded-full cursor-pointer hover:bg-gray-300 flex justify-center items-center w-8 h-8"
             >
-              <img
-                class="w-6 h-6 m-1"
-                src="../assets/icon/settings.png"
-                alt=""
-              />
-            </ul></li
+              <Icon name="fluent:alert-badge-16-filled" size="20"></Icon>
+            </ul></div
         ></NuxtLink>
       </div>
     </section>
@@ -95,9 +54,7 @@ export default {
     return {
       fName: "Pro",
       lName: "Include",
-      Nname: "",
-      age: 20,
-      gMail: "ProInclude@gmail.com",
+      gMail: "IncludePro@gmail.com",
 
       // Array
       hobby: ["Playingame", "listenMusic"],

@@ -1,105 +1,66 @@
 <template>
-  <div class="flex h-4/5">
-    <section class="flex-col w-full">
-      <!-- Headbar -->
-      <nav class="">
-        <div>
-          <Search></Search>
-        </div>
-      </nav>
-      <!-- Router view -->
-      <div class="h-full w-full overflow-auto">
-        <div class="p-1">
-          <div
-            class="grid grid-cols-4 items-center rounded-md bg-white drop-shadow-md m-4 mt-4 h-16 hover:bg-violet-300 cursor-pointer p-2"
-            v-for="(item, index) in stdData"
-            :key="index"
-          >
-            <div class="flex items-center space-x-4">
-              <img class="h-12 w-12 rounded-full" :src="item.icon" alt="" />
-              <p>{{ item.name }}</p>
-            </div>
+  <div class="bg-violet-50 w-full h-full">
+    <div class="flex-col w-full relative">
+      <section class="sticky top-0 bg-white m-1">
+        <input
+          type="text"
+          placeholder="Search"
+          v-model="search"
+          class="border rounded-full w-96 px-2 m-4"
+        />
+        <Icon
+          class="bg-violet-500 w-7 h-7 rounded-full p-1"
+          name="fluent:search-48-regular"
+          size="28"
+        ></Icon>
+      </section>
 
-            <p>ID:{{ item.id }}</p>
-            <p>Classrom:{{ item.class }}</p>
-            <p>Year:{{ item.year }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      <section class="h-full w-full overflow-auto">
+        <ol class="p-1" v-for="item in students" :key="item.id">
+          <NuxtLink :to="`/students/${item.id}`"
+            ><li
+              class="items-center grid grid-cols-4 h-16 bg-white shadow-md p-2 hover:bg-violet-500 rounded-sm"
+            >
+              <p>Name: {{ item.std_fname }} {{ item.std_lname }}</p>
+              <p>ID: {{ item.std_id }}</p>
+              <p>Classroom: {{ item.std_date_of_birth }}</p>
+              <p>Years: {{ item.std_address }}</p>
+            </li></NuxtLink
+          >
+        </ol>
+      </section>
+    </div>
   </div>
 </template>
 
-<script setup>
-import dosone from "../../assets/img//Anousone.jpg";
-import pinmook from "../../assets/img/Untitled-1.png";
-import nutnole from "../../assets/img/nut.png";
-import wenkuku from "../../assets/img/Screenshot 2023-01-25 135650.png";
+<script setup lang="ts">
+import { GET_STUDENT, GET_STUDENT_PK } from "~~/gql/query/studentQuery";
+import { Student } from "~~/types/student";
 
-const stdData = [
-  {
-    name: "Anusone Silavong",
-    id: "12345678",
-    class: "IT13M3",
-    year: "3",
-    icon: dosone,
-  },
-  {
-    name: "Pin Mook",
-    id: "12345679",
-    class: "IT13M3",
-    year: "3",
-    icon: pinmook,
-  },
-  {
-    name: "Nut Noel",
-    id: "123456710",
-    class: "IT13M3",
-    year: "3",
-    icon: nutnole,
-  },
-  {
-    name: "Wen Kuku",
-    id: "123456711",
-    class: "IT13M3",
-    year: "3",
-    icon: wenkuku,
-  },
-  {
-    name: "Pin Mook",
-    id: "123456711",
-    class: "IT13M3",
-    year: "3",
-    icon: pinmook,
-  },
-  {
-    name: "Nut Noel",
-    id: "123456712",
-    class: "IT13M3",
-    year: "3",
-    icon: nutnole,
-  },
-  {
-    name: "Anusone Silavong",
-    id: "123456713",
-    class: "IT13M3",
-    year: "3",
-    icon: dosone,
-  },
-  {
-    name: "Nut Noel",
-    id: "123456714",
-    class: "IT13M3",
-    year: "3",
-    icon: nutnole,
-  },
-  {
-    name: "Pin Mook",
-    id: "123456715",
-    class: "IT13M3",
-    year: "3",
-    icon: pinmook,
-  },
+definePageMeta({
+  middleware: "user-only",
+});
 
-];
+const students = ref<Student[]>([]);
+const search = ref("");
+
+const getStudent = async () => {
+  const { data, error } = await useAsyncQuery<any>(GET_STUDENT, {
+    where: {
+      std_fname: {
+        _ilike: `%${search.value}%`,
+      },
+    },
+  });
+  if (error.value) {
+    console.error(error.value);
+  }
+  console.log(data.value.student);
+  const { student: std } = data.value;
+  students.value = std;
+};
+
+watchEffect(() => {
+  getStudent();
+});
 </script>

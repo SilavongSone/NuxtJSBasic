@@ -1,59 +1,57 @@
 <template>
   <div class="bg-violet-50 w-full h-full">
-    <section class="flex justify-between ml-3 pt-4 items-center">
-      <!-- Department -->
+    <section class="grid grid-flow-col ml-10">
+      <div class="flex items-center p-2">
+        <p>Department:</p>
+        <select>
+          <option>Information Technology</option>
+          <option>Electonic</option>
+          <option>IT Subport</option>
+        </select>
+      </div>
       <div class="flex items-center">
-        <div class="font-medium pr-10 text-sm">TimeTable</div>
-        <div class="flex pr-6 items-center text-sm">
-          <div class="pr-1">Department :</div>
-          <div class="bg-white shadow-md p-1 rounded-full text-sm">
-            <select>
-              <option>Information Technology</option>
-              <option>Department of Accounting</option>
-              <option>Electonic</option>
-            </select>
-          </div>
-        </div>
+        <p>Years:</p>
+        <select>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
       </div>
-
-      <!-- Years -->
-      <div class="flex pr-20 items-center text-sm">
-        <div class="pr-1">Years :</div>
-        <div class="bg-white shadow-md p-1 rounded-full px-5">
-          <select class="bg-white w-full">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Classroom -->
-      <div class="flex pr-10 items-center text-sm">
-        <div class="pr-1">Classroom :</div>
-        <div class="bg-white shadow-md rounded-full p-1 px-5">
-          <select class="bg-white w-full">
-            <option>IT13M1</option>
-            <option>IT13M2</option>
-            <option>IT13M3</option>
-          </select>
-        </div>
+      <div class="flex items-center">
+        <p>Classroom:</p>
+        <select>
+          <option>IT13M1</option>
+          <option>CT13M1</option>
+          <option>IS13M1</option>
+        </select>
       </div>
     </section>
 
-<!-- table -->
+    <!-- table -->
     <section class="m-2 text-sm my-4">
       <table class="table-fixed w-full">
         <thead class="">
           <tr class="font-medium">
-            <td class="p-3 border-4 bg-white rounded-2xl border-violet-50 flex justify-center items-center">
+            <td
+              class="p-3 border-4 bg-white rounded-2xl border-violet-50 flex justify-center items-center"
+            >
               Time
             </td>
-            <td class="border-4 bg-white rounded-2xl border-violet-50 "><p class="flex justify-center items-center">Mon</p></td>
-            <td class="border-4 bg-white rounded-2xl border-violet-50 "><p class="flex justify-center items-center">Tue</p></td>
-            <td class="border-4 bg-white rounded-2xl border-violet-50 "><p class="flex justify-center items-center">Wen</p></td>
-            <td class="border-4 bg-white rounded-2xl border-violet-50 "><p class="flex justify-center items-center">Thu</p></td>
-            <td class="border-4 bg-white rounded-2xl border-violet-50 "><p class="flex justify-center items-center">Fri</p></td>
+            <td class="border-4 bg-white rounded-2xl border-violet-50">
+              <p class="flex justify-center items-center">Mon</p>
+            </td>
+            <td class="border-4 bg-white rounded-2xl border-violet-50">
+              <p class="flex justify-center items-center">Tue</p>
+            </td>
+            <td class="border-4 bg-white rounded-2xl border-violet-50">
+              <p class="flex justify-center items-center">Wen</p>
+            </td>
+            <td class="border-4 bg-white rounded-2xl border-violet-50">
+              <p class="flex justify-center items-center">Thu</p>
+            </td>
+            <td class="border-4 bg-white rounded-2xl border-violet-50">
+              <p class="flex justify-center items-center">Fri</p>
+            </td>
           </tr>
         </thead>
         <tbody>
