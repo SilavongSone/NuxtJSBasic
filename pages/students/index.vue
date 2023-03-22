@@ -6,7 +6,7 @@
         <select>
           <option>Information Technology</option>
           <option>Electonic</option>
-          <option>IT Subport</option>
+          <option>IT Subports</option>
         </select>
       </div>
       <div class="flex items-center">
