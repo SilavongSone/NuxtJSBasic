@@ -19,7 +19,7 @@
         <ol class="p-1" v-for="item in students" :key="item.id">
           <NuxtLink :to="`/students/${item.id}`"
             ><li
-              class="items-center grid grid-cols-4 h-16 bg-white shadow-md p-2 hover:bg-violet-500 rounded-sm"
+              class="items-center grid grid-cols-4 h-16 bg-white shadow-md p-2 hover:bg-violet-500 rounded-sm hover:text-white transition-all duration-700 ease-out"
             >
               <p>Name: {{ item.std_fname }} {{ item.std_lname }}</p>
               <p>ID: {{ item.std_id }}</p>

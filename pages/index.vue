@@ -1,19 +1,17 @@
 <template>
-  <div class="box-border fixed">
-    <div class="grid grid-cols-3 w-full h-screen">
-      <div class="w-full h-full col-span-3 lg:col-span-2">
+  <div class="box-border fixed bg-violet-50">
+    <div class="h-screen w-full">
+      <div class="w-full h-full">
         <!-- total -->
-        <section
-          class="grid xl:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-2"
-        >
+        <section class="grid grid-flow-col w-full">
           <article v-for="(item, index) in toTal" :key="index">
             <ul class="py-2 flex justify-center items-center">
               <li
-                class="w-40 h-28 justify-center items-center rounded-xl"
+                class="2xl:w-64 2xl:h-28 xl:w-56 xl:h-28 lg:w-40 lg:h-28 md:w-32 md:h-28 w-20 h-36 justify-center items-center rounded-xl"
                 :class="[item.color]"
               >
                 <div
-                  class="py-1 flex flex-col justify-center items-center text-md font-thin"
+                  class="py-[4px] flex flex-col justify-center items-center text-md font-thin"
                 >
                   <Icon :name="item.icon" size="50" />
                   <p class="text-center text-black">{{ item.label }}</p>
@@ -25,218 +23,107 @@
         </section>
 
         <!-- echarts -->
-        <section class="p-2 m-2 hidden md:block">
-          <ul class="grid grid-cols-3 items-center">
-            <div
-              class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90 col-span-2"
-            >
-              <li class="p-2 absolute">Statistics</li>
-              <li class="h-48" id="chartBar"></li>
-            </div>
-            <div
-              class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
-            >
-              <li class="p-2">Courses</li>
-              <li class="h-40" id="chartPie"></li>
-            </div>
-          </ul>
+        <section class="p-2 m-2 grid grid-cols-3">
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90 col-span-2"
+          >
+            <p class="p-2 absolute">Statistics</p>
+            <p class="h-48" id="chartBar"></p>
+          </div>
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md relative mx-2 hover:brightness-90"
+          >
+            <p class="p-2">Courses</p>
+            <p class="h-40" id="chartPie"></p>
+          </div>
         </section>
 
         <!-- table -->
-        <section class="w-full h-full p-1 m-2 hidden sm:block">
-          <div class="p-2 m-2 border-2">
-            <div class="overflow-hidden">
-              <ul class="flex pl-2 pt-2 bg-white justify-between">
-                <li class="font-semibold">Database</li>
-                <li class="flex space-x-8 mr-4">
-                  <button class="btn p-1">Teacher</button>
-                  <button class="btn p-1">Students</button>
-                  <button class="btn p-1">Staff</button>
-                </li>
-              </ul>
+        <section class="w-full h-full p-6 hidden md:block">
+          <div class="overflow-hidden pr-4 p-4 bg-white rounded-lg shadow-lg">
+            <ul class="flex pl-2 pt-2 justify-between">
+              <li class="font-semibold">Database</li>
+              <li class="flex space-x-8 mr-4 text-gray-500">
+                <button class="btn p-1">Teacher</button>
+                <button class="btn p-1">Students</button>
+                <button class="btn p-1">Staff</button>
+              </li>
+            </ul>
 
-              <ul>
-                <li class="m-2 text-sm p-2">
-                  <table class="table-fixed w-full border-2 p-2">
-                    <thead class="border-2">
-                      <tr class="font-medium">
-                        <td>
-                          <p
-                            class="flex justify-center items-center overflow-hidden m-2"
-                          >
-                            Students Name
-                          </p>
-                        </td>
-                        <td>
-                          <p
-                            class="flex justify-center items-center overflow-hidden"
-                          >
-                            Score
-                          </p>
-                        </td>
-                        <td>
-                          <p
-                            class="flex justify-center items-center overflow-hidden"
-                          >
-                            Submited
-                          </p>
-                        </td>
-                        <td>
-                          <p
-                            class="flex justify-center items-center overflow-hidden"
-                          >
-                            Grad
-                          </p>
-                        </td>
-                        <td>
-                          <p
-                            class="flex justify-center items-center overflow-hidden"
-                          >
-                            Pass/Fail
-                          </p>
-                        </td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        class="cursor-pointer bg-white p-2 hover:brightness-90"
-                        v-for="(item, index) in students"
-                        :key="index"
-                      >
-                        <td class="flex space-x-2">
-                          <p class="flex justify-center items-center p-1">
-                            {{ item.std_fname }} {{ item.std_lname }}
-                          </p>
-                        </td>
-                        <td>
-                          <p class="flex justify-center items-center">
-                            {{ item.std_date_of_birth }}
-                          </p>
-                        </td>
-                        <td>
-                          <p class="flex justify-center items-center">
-                            {{ item.std_parent }}
-                          </p>
-                        </td>
-                        <td>
-                          <p class="flex justify-center items-center">
-                            {{ item.std_gender }}
-                          </p>
-                        </td>
-                        <td>
-                          <p class="flex justify-center items-center">
-                            {{ item.std_parent_phone }}
-                          </p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </li>
-              </ul>
-            </div>
+            <table class="table-fixed w-full">
+              <thead>
+                <tr class="font-medium">
+                  <td>
+                    <p
+                      class="flex justify-center items-center overflow-hidden m-2"
+                    >
+                      Students Name
+                    </p>
+                  </td>
+                  <td>
+                    <p class="flex justify-center items-center overflow-hidden">
+                      Score
+                    </p>
+                  </td>
+                  <td>
+                    <p class="flex justify-center items-center overflow-hidden">
+                      Submited
+                    </p>
+                  </td>
+                  <td>
+                    <p class="flex justify-center items-center overflow-hidden">
+                      Grad
+                    </p>
+                  </td>
+                  <td>
+                    <p class="flex justify-center items-center overflow-hidden">
+                      Pass/Fail
+                    </p>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-t-2 border-black border-opacity-50 text-gray-500 cursor-pointer bg-white p-2 hover:brightness-75 transition-all duration-1000 ease-out"
+                  v-for="(item, index) in students"
+                  :key="index"
+                >
+                  <td class="flex space-x-2">
+                    <p class="flex justify-center items-center p-1">
+                      {{ item.std_fname }} {{ item.std_lname }}
+                    </p>
+                  </td>
+                  <td>
+                    <p class="flex justify-center items-center">
+                      {{ item.std_date_of_birth }}
+                    </p>
+                  </td>
+                  <td>
+                    <p class="flex justify-center items-center">
+                      {{ item.std_parent }}
+                    </p>
+                  </td>
+                  <td>
+                    <p class="flex justify-center items-center">
+                      {{ item.std_gender }}
+                    </p>
+                  </td>
+                  <td>
+                    <p class="flex justify-center items-center">
+                      {{ item.std_parent_phone }}
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
-      </div>
 
-      <!-- calendar -->
-
-      <div class="w-full h-full overflow-hidden hidden lg:block">
-        <section class="m-2 overflow-hidden flex justify-center p-2">
-          <ul class="wrapper bg-gray-400 rounded-md">
-            <header class="">
-              <p class="current-date">February 2022</p>
-              <div class="icons">
-                <span id="prev" class="material-symbols-rounded"
-                  ><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-10 h-10 text-white hover:text-violet-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </span>
-                <span id="next" class="material-symbols-rounded"
-                  ><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-10 h-10 text-white hover:text-violet-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </span>
-              </div>
-            </header>
-
-            <div class="calendar">
-              <ul class="weeks">
-                <li class="px-4">Sun</li>
-                <li class="px-4">Mon</li>
-                <li class="px-4">Tue</li>
-                <li class="px-4">Wed</li>
-                <li class="px-4">Thu</li>
-                <li class="px-4">Fri</li>
-                <li class="px-4">Sat</li>
-              </ul>
-              <ul class="day text-xs">
-                <li class="inactive">29</li>
-                <li class="inactive">30</li>
-                <li class="inactive">31</li>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
-                <li>14</li>
-                <li>15</li>
-                <li>16</li>
-                <li>17</li>
-                <li>18</li>
-                <li>19</li>
-                <li>20</li>
-                <li>21</li>
-                <li>22</li>
-                <li class="active">23</li>
-                <li>24</li>
-                <li>25</li>
-                <li>26</li>
-                <li>27</li>
-                <li>28</li>
-                <li class="inactive">1</li>
-                <li class="inactive">2</li>
-                <li class="inactive">3</li>
-                <li class="inactive">4</li>
-                <li class="inactive">5</li>
-                <li class="inactive">6</li>
-                <li class="inactive">7</li>
-                <li class="inactive">8</li>
-                <li class="inactive">9</li>
-                <li class="inactive">10</li>
-                <li class="inactive">11</li>
-              </ul>
-            </div>
-          </ul>
+        <section class="block md:hidden lg:hidden xl:hidden 2xl:hidden p-4">
+          <div>
+            <p class="text-2xl flex justify-center text-red-500">Error</p>
+            <p class="flex justify-center">Database not subport low screen!</p>
+          </div>
         </section>
       </div>
     </div>
@@ -331,7 +218,7 @@ function chBar() {
       {
         name: "Direct",
         type: "bar",
-        barWidth: "40%",
+        barWidth: "20%",
         data: [
           100,
           200,
@@ -398,95 +285,3 @@ onMounted(() => {
   chPie();
 });
 </script>
-
-<style scoped>
-/* calendar Dynamic */
-
-.wrapper {
-  width: 500px;
-  height: 450px;
-}
-.wrapper header {
-  display: flex;
-  align-items: center;
-  padding: 25px 30px 10px;
-  justify-content: space-between;
-}
-header .icons {
-  display: flex;
-}
-header .icons span {
-  height: 38px;
-  width: 38px;
-  margin: 0 1px;
-  cursor: pointer;
-  color: #878787;
-  text-align: center;
-  line-height: 38px;
-  font-size: 1.9rem;
-  user-select: none;
-  border-radius: 50%;
-}
-.icons span:last-child {
-  margin-right: -10px;
-}
-
-header .current-date {
-  font-size: 1.45rem;
-  font-weight: 500;
-}
-
-/* bodycalendar */
-.calendar {
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 0%;
-}
-.calendar ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  text-align: center;
-}
-.calendar .day {
-  margin-bottom: 20px;
-}
-.calendar li {
-  color: #333;
-  width: calc(100% / 7);
-  font-size: 1.07rem;
-}
-.calendar .weeks li {
-  font-weight: 500;
-  cursor: default;
-}
-.calendar .day li {
-  z-index: 1;
-  cursor: pointer;
-  position: relative;
-  margin-top: 30px;
-}
-.day li.inactive {
-  color: #aaa;
-}
-.day li.active {
-  color: #f9f9f9;
-}
-.day li::before {
-  position: absolute;
-  content: "";
-  left: 50%;
-  top: 50%;
-  height: 40px;
-  width: 40px;
-  z-index: -1;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-.day li.active::before {
-  background: #ba7dd2;
-}
-.day li:not(.active):hover::before {
-  background: #ba7dd2;
-}
-</style>
