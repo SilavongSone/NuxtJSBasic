@@ -1,32 +1,47 @@
 <template>
-  <div>
-    <div class="h-screen">
-      <section
-        class="flex flex-col p-10 justify-center items-center gap-2 rounded-md h-full bg-violet-50"
-      >
-        <div class="bg-violet-500 shadow-sm h-40 p-2">
-          <h1 class="flex text-white p-2 justify-center text-xl">
-            LOGIN
-          </h1>
-          <div class="flex flex-col">
-            <p>Email</p>
-            <input class="border" v-model="email" type="email" required />  
-            <p>password</p>
-            <input class="border" v-model="password" type="password" required />
+  <div class="flex justify-center items-center h-screen bg-slate-700">
+    <div class="w-96 p-6 shadow-lg bg-white rounded-md">
+      <h1 class="text-3xl text-violet-500 block text-center font-semibold">
+        <Icon name="material-symbols:account-circle-sharp" size="40" /> Login
+      </h1>
+      <hr class="mt-3" />
+      <div class="mt-3">
+        <p>Email</p>
+        <input
+          class="borde w-full text-base px-2 py-1 focus:outline-none focus:right-0 focus:border-gray-600"
+          placeholder="Enter Email..."
+          v-model="email"
+          type="email"
+          required
+        />
+      </div>
+      <div class="mt-3">
+        <p>Password</p>
+        <input
+          class="borde w-full text-base px-2 py-1 focus:outline-none focus:right-0 focus:border-gray-600"
+          placeholder="Enter Password..."
+          v-model="password"
+          type="password"
+          required
+        />
+        <div class="mt-3 flex justify-between items-center">
+          <div class="space-x-2">
+            <input class="" type="checkbox" />
+            <label>Remember Me</label>
           </div>
-          <div class="flex justify-between bg-violet-500 ">
-            <button
-              class="bg-gray-100 hover:bg-gray-300 rounded-sm p-1 mt-4"
-              @click.prevent="handleLogin"
+          <div>
+            <a href="#" class="text-red-500 font-semibold hover:text-violet-500"
+              >Forgot Password?</a
             >
-              Login
-            </button>
-            <button class="bg-gray-100 hover:bg-gray-300 rounded-sm p-1 mt-4">
-            Register
-            </button>
           </div>
         </div>
-      </section>
+        <button
+          class=" my-2 border-2 border-violet-500 bg-violet-500 text-black py-1 w-full"
+          @click.prevent="handleLogin"
+        >
+        <Icon name="material-symbols:login-rounded" size="20" /> Login
+        </button>
+      </div>
     </div>
   </div>
 </template>
