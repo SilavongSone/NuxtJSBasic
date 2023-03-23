@@ -18,7 +18,7 @@
         <li>{{ teacher?.tc_date_of_birth }}</li>
       </ol>
       <ol class="grid grid-cols-2 border-r-2">
-        <li>First Name:</li>
+        <li>Firsts Name:</li>
         <li>{{ teacher?.tc_phone }}</li>
       </ol>
       <ol class="grid grid-cols-2 border-r-2">
