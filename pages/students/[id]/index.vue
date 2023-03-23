@@ -49,6 +49,7 @@
 <script setup lang="ts">
 import { GET_STUDENT_PK } from "~~/gql/query/studentQuery";
 import { Student } from "~~/types/student";
+
 const { id } = useRoute().params;
 
 const student = ref<Student>();
@@ -69,5 +70,3 @@ onMounted(() => {
   getData();
 });
 </script>
-
-<style lang="scss" scoped></style>
