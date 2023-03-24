@@ -6,7 +6,7 @@
         <li>{{ teacher?.tc_fname }}</li>
       </ol>
       <ol class="grid grid-cols-2 border-r-2">
-        <li>First Name:</li>
+        <li>Last Name:</li>
         <li>{{ teacher?.tc_lname }}</li>
       </ol>
       <ol class="grid grid-cols-2 border-r-2">
@@ -14,20 +14,24 @@
         <li>{{ teacher?.tc_courses }}</li>
       </ol>
       <ol class="grid grid-cols-2 border-r-2">
-        <li>First Name:</li>
+        <li>Date of Birth:</li>
         <li>{{ teacher?.tc_date_of_birth }}</li>
       </ol>
       <ol class="grid grid-cols-2 border-r-2">
-        <li>Firsts Name:</li>
+        <li>Phone:</li>
         <li>{{ teacher?.tc_phone }}</li>
       </ol>
       <ol class="grid grid-cols-2 border-r-2">
-        <li>First Name:</li>
+        <li>Gender:</li>
         <li>{{ teacher?.tc_gender }}</li>
       </ol>
       <ol class="grid grid-cols-2 border-r-2">
-        <li>First Name:</li>
+        <li>Email:</li>
         <li>{{ teacher?.tc_email }}</li>
+      </ol>
+      <ol class="grid grid-cols-2 border-r-2">
+        <li>Address:</li>
+        <li>{{ teacher?.tc_address }}</li>
       </ol>
     </div>
   </div>
